@@ -41,6 +41,50 @@ begin
     done => done
   );
 
+  stimulus : process
+  begin
+
+    reset <= '1';
+
+    wait until rising_edge(clk);
+    wait for 1 ns;
+
+    reset <= '0';
+
+    w00 <= to_signed(1, 8);
+    w01 <= to_signed(2, 8);
+    w10 <= to_signed(3, 8);
+    w11 <= to_signed(4, 8);
+
+    x0 <= to_signed(5,8);
+    x1 <= to_signed(6,8);
+
+    start <= '1';
+
+    wait until rising_edge(clk);
+    wait for 1 ns;
+
+    start <= '0';
+
+    --wait for accelerator to finish
+    wait until done = '1';
+    wait for 1 ns;
+
+    assert y0 = to_signed(17,32)
+      report "y0 incorrect"
+      severity error;
+    
+    assert y1 = to_signed(39, 32)
+      report "y1 incorrect"
+      severity error;
+
+    report "MatVec Engine Pass"
+      severity note;
+    
+    wait;
+
+  end process;
+
 end architecture;
     
 
