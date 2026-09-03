@@ -1,31 +1,31 @@
 v 4
-file . "src/matmul_engine_2x2.vhd" "3a99a786fefd229ce14e3d474334dce0174bfa5f" "20260903040958.901":
-  entity matmul_engine_2x2 at 1( 0) + 0 on 115;
-  architecture rtl of matmul_engine_2x2 at 33( 699) + 0 on 116;
-file . "src/pe.vhd" "70908cdfad7ba7ba6a6ea31bf1d865e0a6b851f5" "20260903040958.900":
-  entity pe at 1( 0) + 0 on 111;
-  architecture rtl of pe at 21( 370) + 0 on 112;
-file . "tb/mac_tb.vhd" "01815c328c352c08a8c49eac02f8914b18c0f400" "20260811072322.538":
-  entity mac_tb at 1( 0) + 0 on 25;
-  architecture sim of mac_tb at 8( 107) + 0 on 26;
-file . "src/mac.vhd" "81986a71f36343292e890b6fabbb552e372b5bad" "20260903040958.900":
-  entity mac at 1( 0) + 0 on 109;
-  architecture rtl of mac at 18( 295) + 0 on 110;
-file . "tb/pe_tb.vhd" "5f6a6cf6c65bd27a8905b74caf388eff31d1affb" "20260811082253.889":
-  entity pe_tb at 1( 0) + 0 on 41;
-  architecture sim of pe_tb at 8( 105) + 0 on 42;
-file . "src/pe_chain_2.vhd" "3d7bfd9ad03ce6c48dbb1ff91008d9b5a0604151" "20260812030335.764":
-  entity pe_chain_2 at 1( 0) + 0 on 69;
-  architecture rtl of pe_chain_2 at 19( 432) + 0 on 70;
-file . "tb/pe_chain_2_tb.vhd" "6a48ad132b12468ae29af8bf581207d7def25e59" "20260812023214.660":
-  entity pe_chain_2_tb at 1( 0) + 0 on 63;
-  architecture sim of pe_chain_2_tb at 8( 121) + 0 on 64;
-file . "src/pe_array_2x2.vhd" "dd54450de35ce63730e358d6c826a4f8c6992b24" "20260903040958.901":
-  entity pe_array_2x2 at 1( 0) + 0 on 113;
-  architecture rtl of pe_array_2x2 at 27( 759) + 0 on 114;
+file . "tb/matmul_engine_2x2_tb.vhd" "9fa48195fdfbcf71678d299dac31a97316d9e560" "20260903061005.490":
+  entity matmul_engine_2x2_tb at 1( 0) + 0 on 127;
+  architecture sim of matmul_engine_2x2_tb at 8( 114) + 0 on 128;
 file . "tb/pe_array_2x2_tb.vhd" "93cb5049fc9001138e6ef209ba52b6ac307cf4e5" "20260812071543.343":
   entity pe_array_2x2_tb at 1( 0) + 0 on 83;
   architecture sim of pe_array_2x2_tb at 8( 125) + 0 on 84;
-file . "tb/matmul_engine_2x2_tb.vhd" "9fa48195fdfbcf71678d299dac31a97316d9e560" "20260903040958.902":
-  entity matmul_engine_2x2_tb at 1( 0) + 0 on 117;
-  architecture sim of matmul_engine_2x2_tb at 8( 114) + 0 on 118;
+file . "src/pe_array_2x2.vhd" "dd54450de35ce63730e358d6c826a4f8c6992b24" "20260903061005.487":
+  entity pe_array_2x2 at 1( 0) + 0 on 123;
+  architecture rtl of pe_array_2x2 at 27( 759) + 0 on 124;
+file . "tb/pe_chain_2_tb.vhd" "6a48ad132b12468ae29af8bf581207d7def25e59" "20260812023214.660":
+  entity pe_chain_2_tb at 1( 0) + 0 on 63;
+  architecture sim of pe_chain_2_tb at 8( 121) + 0 on 64;
+file . "src/pe_chain_2.vhd" "3d7bfd9ad03ce6c48dbb1ff91008d9b5a0604151" "20260812030335.764":
+  entity pe_chain_2 at 1( 0) + 0 on 69;
+  architecture rtl of pe_chain_2 at 19( 432) + 0 on 70;
+file . "tb/pe_tb.vhd" "5f6a6cf6c65bd27a8905b74caf388eff31d1affb" "20260811082253.889":
+  entity pe_tb at 1( 0) + 0 on 41;
+  architecture sim of pe_tb at 8( 105) + 0 on 42;
+file . "src/mac.vhd" "81986a71f36343292e890b6fabbb552e372b5bad" "20260903061005.485":
+  entity mac at 1( 0) + 0 on 119;
+  architecture rtl of mac at 18( 295) + 0 on 120;
+file . "tb/mac_tb.vhd" "01815c328c352c08a8c49eac02f8914b18c0f400" "20260811072322.538":
+  entity mac_tb at 1( 0) + 0 on 25;
+  architecture sim of mac_tb at 8( 107) + 0 on 26;
+file . "src/pe.vhd" "70908cdfad7ba7ba6a6ea31bf1d865e0a6b851f5" "20260903061005.486":
+  entity pe at 1( 0) + 0 on 121;
+  architecture rtl of pe at 21( 370) + 0 on 122;
+file . "src/matmul_engine_2x2.vhd" "3a99a786fefd229ce14e3d474334dce0174bfa5f" "20260903061005.488":
+  entity matmul_engine_2x2 at 1( 0) + 0 on 125;
+  architecture rtl of matmul_engine_2x2 at 33( 699) + 0 on 126;
