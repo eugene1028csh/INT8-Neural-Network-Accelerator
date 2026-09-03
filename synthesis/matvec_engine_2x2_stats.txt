@@ -1,0 +1,673 @@
+
+ /----------------------------------------------------------------------------\
+ |                                                                            |
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |                                                                            |
+ |  Copyright (C) 2012 - 2020  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |                                                                            |
+ |  Permission to use, copy, modify, and/or distribute this software for any  |
+ |  purpose with or without fee is hereby granted, provided that the above    |
+ |  copyright notice and this permission notice appear in all copies.         |
+ |                                                                            |
+ |  THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES  |
+ |  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF          |
+ |  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR   |
+ |  ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES    |
+ |  WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN     |
+ |  ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF   |
+ |  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.            |
+ |                                                                            |
+ \----------------------------------------------------------------------------/
+
+ Yosys 0.33 (git sha1 2584903a060)
+
+
+-- Running command `read_verilog synthesis/matvec_engine_2x2_synth.v; hierarchy -top matvec_engine_2x2; proc; opt; stat' --
+
+1. Executing Verilog-2005 frontend: synthesis/matvec_engine_2x2_synth.v
+Parsing Verilog input from `synthesis/matvec_engine_2x2_synth.v' to AST representation.
+Generating RTLIL representation for module `\mac'.
+Generating RTLIL representation for module `\pe'.
+Generating RTLIL representation for module `\pe_array_2x2'.
+Generating RTLIL representation for module `\matvec_engine_2x2'.
+Successfully finished Verilog frontend.
+
+2. Executing HIERARCHY pass (managing design hierarchy).
+
+2.1. Analyzing design hierarchy..
+Top module:  \matvec_engine_2x2
+Used module:     \pe_array_2x2
+Used module:         \pe
+Used module:             \mac
+
+2.2. Analyzing design hierarchy..
+Top module:  \matvec_engine_2x2
+Used module:     \pe_array_2x2
+Used module:         \pe
+Used module:             \mac
+Removed 0 unused modules.
+
+3. Executing PROC pass (convert processes to netlists).
+
+3.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+3.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 1 switch rules as full_case in process $proc$synthesis/matvec_engine_2x2_synth.v:490$61 in module matvec_engine_2x2.
+Marked 1 switch rules as full_case in process $proc$synthesis/matvec_engine_2x2_synth.v:479$60 in module matvec_engine_2x2.
+Marked 1 switch rules as full_case in process $proc$synthesis/matvec_engine_2x2_synth.v:468$59 in module matvec_engine_2x2.
+Marked 1 switch rules as full_case in process $proc$synthesis/matvec_engine_2x2_synth.v:457$58 in module matvec_engine_2x2.
+Marked 1 switch rules as full_case in process $proc$synthesis/matvec_engine_2x2_synth.v:446$57 in module matvec_engine_2x2.
+Marked 1 switch rules as full_case in process $proc$synthesis/matvec_engine_2x2_synth.v:435$56 in module matvec_engine_2x2.
+Marked 1 switch rules as full_case in process $proc$synthesis/matvec_engine_2x2_synth.v:424$55 in module matvec_engine_2x2.
+Marked 1 switch rules as full_case in process $proc$synthesis/matvec_engine_2x2_synth.v:400$48 in module matvec_engine_2x2.
+Removed a total of 0 dead cases.
+
+3.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 0 redundant assignments.
+Promoted 53 assignments to connections.
+
+3.4. Executing PROC_INIT pass (extract init attributes).
+Found init rule in `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:0$89'.
+  Set init value: \n136_q = 3'000
+Found init rule in `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:0$88'.
+  Set init value: \n135_q = 8'00000000
+Found init rule in `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:0$87'.
+  Set init value: \n134_q = 8'00000000
+Found init rule in `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:0$86'.
+  Set init value: \n133_q = 8'00000000
+Found init rule in `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:0$85'.
+  Set init value: \n132_q = 8'00000000
+Found init rule in `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:0$84'.
+  Set init value: \n131_q = 8'00000000
+Found init rule in `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:0$83'.
+  Set init value: \n130_q = 8'00000000
+Found init rule in `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:0$82'.
+  Set init value: \next_state = 3'000
+Found init rule in `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:0$81'.
+  Set init value: \current_state = 3'000
+Found init rule in `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:0$80'.
+  Set init value: \array_reset = 1'0
+Found init rule in `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:0$79'.
+  Set init value: \array_enable = 1'0
+Found init rule in `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:0$78'.
+  Set init value: \array_b_col1 = 8'00000000
+Found init rule in `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:0$77'.
+  Set init value: \array_b_col0 = 8'00000000
+Found init rule in `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:0$76'.
+  Set init value: \array_a_row1 = 8'00000000
+Found init rule in `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:0$75'.
+  Set init value: \array_a_row0 = 8'00000000
+Found init rule in `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:0$74'.
+  Set init value: \x1_reg = 8'00000000
+Found init rule in `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:0$73'.
+  Set init value: \x0_reg = 8'00000000
+Found init rule in `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:0$72'.
+  Set init value: \w11_reg = 8'00000000
+Found init rule in `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:0$71'.
+  Set init value: \w10_reg = 8'00000000
+Found init rule in `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:0$70'.
+  Set init value: \w01_reg = 8'00000000
+Found init rule in `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:0$69'.
+  Set init value: \w00_reg = 8'00000000
+
+3.5. Executing PROC_ARST pass (detect async resets in processes).
+
+3.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~8 debug messages>
+
+3.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:0$89'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:0$88'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:0$87'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:0$86'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:0$85'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:0$84'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:0$83'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:0$82'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:0$81'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:0$80'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:0$79'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:0$78'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:0$77'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:0$76'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:0$75'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:0$74'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:0$73'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:0$72'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:0$71'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:0$70'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:0$69'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:531$68'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:526$67'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:521$66'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:516$65'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:511$64'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:506$63'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:501$62'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:490$61'.
+     1/1: $1\n127_o[0:0]
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:479$60'.
+     1/1: $1\n122_o[0:0]
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:468$59'.
+     1/1: $1\n115_o[7:0]
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:457$58'.
+     1/1: $1\n108_o[7:0]
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:446$57'.
+     1/1: $1\n103_o[7:0]
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:435$56'.
+     1/1: $1\n98_o[7:0]
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:424$55'.
+     1/1: $1\n93_o[0:0]
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:400$48'.
+     1/1: $1\n74_o[2:0]
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:333$25'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:328$24'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:319$23'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:314$22'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:309$21'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:304$20'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:299$19'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:294$18'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:289$17'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:284$16'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:279$15'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:274$14'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:269$13'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:264$12'.
+Creating decoders for process `\pe.$proc$synthesis/matvec_engine_2x2_synth.v:84$11'.
+Creating decoders for process `\pe.$proc$synthesis/matvec_engine_2x2_synth.v:81$10'.
+Creating decoders for process `\mac.$proc$synthesis/matvec_engine_2x2_synth.v:35$5'.
+
+3.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\matvec_engine_2x2.\n127_o' from process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:490$61'.
+No latch inferred for signal `\matvec_engine_2x2.\n122_o' from process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:479$60'.
+No latch inferred for signal `\matvec_engine_2x2.\n115_o' from process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:468$59'.
+No latch inferred for signal `\matvec_engine_2x2.\n108_o' from process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:457$58'.
+No latch inferred for signal `\matvec_engine_2x2.\n103_o' from process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:446$57'.
+No latch inferred for signal `\matvec_engine_2x2.\n98_o' from process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:435$56'.
+No latch inferred for signal `\matvec_engine_2x2.\n93_o' from process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:424$55'.
+No latch inferred for signal `\matvec_engine_2x2.\n74_o' from process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:400$48'.
+No latch inferred for signal `\matvec_engine_2x2.\next_state' from process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:333$25'.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\next_state [0]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:333$25`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\next_state [1]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:333$25`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\next_state [2]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:333$25`.
+No latch inferred for signal `\matvec_engine_2x2.\current_state' from process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:328$24'.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\current_state [0]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:328$24`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\current_state [1]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:328$24`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\current_state [2]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:328$24`.
+No latch inferred for signal `\matvec_engine_2x2.\array_reset' from process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:319$23'.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\array_reset` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:319$23`.
+No latch inferred for signal `\matvec_engine_2x2.\array_enable' from process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:314$22'.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\array_enable` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:314$22`.
+No latch inferred for signal `\matvec_engine_2x2.\array_b_col1' from process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:309$21'.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\array_b_col1 [0]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:309$21`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\array_b_col1 [1]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:309$21`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\array_b_col1 [2]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:309$21`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\array_b_col1 [3]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:309$21`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\array_b_col1 [4]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:309$21`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\array_b_col1 [5]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:309$21`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\array_b_col1 [6]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:309$21`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\array_b_col1 [7]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:309$21`.
+No latch inferred for signal `\matvec_engine_2x2.\array_b_col0' from process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:304$20'.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\array_b_col0 [0]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:304$20`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\array_b_col0 [1]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:304$20`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\array_b_col0 [2]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:304$20`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\array_b_col0 [3]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:304$20`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\array_b_col0 [4]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:304$20`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\array_b_col0 [5]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:304$20`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\array_b_col0 [6]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:304$20`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\array_b_col0 [7]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:304$20`.
+No latch inferred for signal `\matvec_engine_2x2.\array_a_row1' from process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:299$19'.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\array_a_row1 [0]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:299$19`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\array_a_row1 [1]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:299$19`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\array_a_row1 [2]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:299$19`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\array_a_row1 [3]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:299$19`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\array_a_row1 [4]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:299$19`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\array_a_row1 [5]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:299$19`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\array_a_row1 [6]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:299$19`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\array_a_row1 [7]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:299$19`.
+No latch inferred for signal `\matvec_engine_2x2.\array_a_row0' from process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:294$18'.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\array_a_row0 [0]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:294$18`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\array_a_row0 [1]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:294$18`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\array_a_row0 [2]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:294$18`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\array_a_row0 [3]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:294$18`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\array_a_row0 [4]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:294$18`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\array_a_row0 [5]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:294$18`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\array_a_row0 [6]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:294$18`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\array_a_row0 [7]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:294$18`.
+No latch inferred for signal `\matvec_engine_2x2.\x1_reg' from process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:289$17'.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\x1_reg [0]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:289$17`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\x1_reg [1]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:289$17`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\x1_reg [2]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:289$17`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\x1_reg [3]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:289$17`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\x1_reg [4]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:289$17`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\x1_reg [5]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:289$17`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\x1_reg [6]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:289$17`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\x1_reg [7]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:289$17`.
+No latch inferred for signal `\matvec_engine_2x2.\x0_reg' from process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:284$16'.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\x0_reg [0]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:284$16`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\x0_reg [1]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:284$16`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\x0_reg [2]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:284$16`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\x0_reg [3]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:284$16`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\x0_reg [4]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:284$16`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\x0_reg [5]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:284$16`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\x0_reg [6]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:284$16`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\x0_reg [7]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:284$16`.
+No latch inferred for signal `\matvec_engine_2x2.\w11_reg' from process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:279$15'.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\w11_reg [0]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:279$15`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\w11_reg [1]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:279$15`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\w11_reg [2]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:279$15`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\w11_reg [3]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:279$15`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\w11_reg [4]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:279$15`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\w11_reg [5]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:279$15`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\w11_reg [6]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:279$15`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\w11_reg [7]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:279$15`.
+No latch inferred for signal `\matvec_engine_2x2.\w10_reg' from process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:274$14'.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\w10_reg [0]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:274$14`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\w10_reg [1]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:274$14`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\w10_reg [2]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:274$14`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\w10_reg [3]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:274$14`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\w10_reg [4]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:274$14`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\w10_reg [5]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:274$14`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\w10_reg [6]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:274$14`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\w10_reg [7]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:274$14`.
+No latch inferred for signal `\matvec_engine_2x2.\w01_reg' from process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:269$13'.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\w01_reg [0]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:269$13`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\w01_reg [1]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:269$13`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\w01_reg [2]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:269$13`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\w01_reg [3]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:269$13`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\w01_reg [4]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:269$13`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\w01_reg [5]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:269$13`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\w01_reg [6]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:269$13`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\w01_reg [7]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:269$13`.
+No latch inferred for signal `\matvec_engine_2x2.\w00_reg' from process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:264$12'.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\w00_reg [0]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:264$12`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\w00_reg [1]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:264$12`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\w00_reg [2]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:264$12`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\w00_reg [3]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:264$12`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\w00_reg [4]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:264$12`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\w00_reg [5]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:264$12`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\w00_reg [6]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:264$12`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\w00_reg [7]` in process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:264$12`.
+
+3.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\matvec_engine_2x2.\n136_q' using process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:531$68'.
+  created $dff cell `$procdff$154' with positive edge clock.
+Creating register for signal `\matvec_engine_2x2.\n135_q' using process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:526$67'.
+  created $dff cell `$procdff$155' with positive edge clock.
+Creating register for signal `\matvec_engine_2x2.\n134_q' using process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:521$66'.
+  created $dff cell `$procdff$156' with positive edge clock.
+Creating register for signal `\matvec_engine_2x2.\n133_q' using process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:516$65'.
+  created $dff cell `$procdff$157' with positive edge clock.
+Creating register for signal `\matvec_engine_2x2.\n132_q' using process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:511$64'.
+  created $dff cell `$procdff$158' with positive edge clock.
+Creating register for signal `\matvec_engine_2x2.\n131_q' using process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:506$63'.
+  created $dff cell `$procdff$159' with positive edge clock.
+Creating register for signal `\matvec_engine_2x2.\n130_q' using process `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:501$62'.
+  created $dff cell `$procdff$160' with positive edge clock.
+Creating register for signal `\pe.\n174_q' using process `\pe.$proc$synthesis/matvec_engine_2x2_synth.v:84$11'.
+  created $dff cell `$procdff$161' with positive edge clock.
+Creating register for signal `\pe.\n173_q' using process `\pe.$proc$synthesis/matvec_engine_2x2_synth.v:81$10'.
+  created $dff cell `$procdff$162' with positive edge clock.
+Creating register for signal `\mac.\n189_q' using process `\mac.$proc$synthesis/matvec_engine_2x2_synth.v:35$5'.
+  created $dff cell `$procdff$163' with positive edge clock.
+
+3.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+3.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Removing empty process `matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:0$89'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:0$88'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:0$87'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:0$86'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:0$85'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:0$84'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:0$83'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:0$82'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:0$81'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:0$80'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:0$79'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:0$78'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:0$77'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:0$76'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:0$75'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:0$74'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:0$73'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:0$72'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:0$71'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:0$70'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:0$69'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:531$68'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:526$67'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:521$66'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:516$65'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:511$64'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:506$63'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:501$62'.
+Found and cleaned up 1 empty switch in `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:490$61'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:490$61'.
+Found and cleaned up 1 empty switch in `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:479$60'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:479$60'.
+Found and cleaned up 1 empty switch in `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:468$59'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:468$59'.
+Found and cleaned up 1 empty switch in `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:457$58'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:457$58'.
+Found and cleaned up 1 empty switch in `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:446$57'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:446$57'.
+Found and cleaned up 1 empty switch in `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:435$56'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:435$56'.
+Found and cleaned up 1 empty switch in `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:424$55'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:424$55'.
+Found and cleaned up 1 empty switch in `\matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:400$48'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:400$48'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:333$25'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:328$24'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:319$23'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:314$22'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:309$21'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:304$20'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:299$19'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:294$18'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:289$17'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:284$16'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:279$15'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:274$14'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:269$13'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/matvec_engine_2x2_synth.v:264$12'.
+Removing empty process `pe.$proc$synthesis/matvec_engine_2x2_synth.v:84$11'.
+Removing empty process `pe.$proc$synthesis/matvec_engine_2x2_synth.v:81$10'.
+Removing empty process `mac.$proc$synthesis/matvec_engine_2x2_synth.v:35$5'.
+Cleaned up 8 empty switches.
+
+3.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module matvec_engine_2x2.
+<suppressed ~3 debug messages>
+Optimizing module pe_array_2x2.
+Optimizing module pe.
+Optimizing module mac.
+
+4. Executing OPT pass (performing simple optimizations).
+
+4.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module matvec_engine_2x2.
+Optimizing module pe_array_2x2.
+Optimizing module pe.
+Optimizing module mac.
+
+4.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\matvec_engine_2x2'.
+<suppressed ~147 debug messages>
+Finding identical cells in module `\pe_array_2x2'.
+Finding identical cells in module `\pe'.
+Finding identical cells in module `\mac'.
+Removed a total of 49 cells.
+
+4.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \matvec_engine_2x2..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \pe_array_2x2..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \pe..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \mac..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~17 debug messages>
+
+4.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \matvec_engine_2x2.
+    New ctrl vector for $pmux cell $procmux$131: { $procmux$151_CMP $procmux$150_CMP $auto$opt_reduce.cc:134:opt_pmux$165 }
+    New ctrl vector for $pmux cell $procmux$99: { $auto$opt_reduce.cc:134:opt_pmux$169 $auto$opt_reduce.cc:134:opt_pmux$167 }
+    New ctrl vector for $pmux cell $procmux$123: { $procmux$152_CMP $procmux$151_CMP $auto$opt_reduce.cc:134:opt_pmux$171 }
+    New ctrl vector for $pmux cell $procmux$91: { $procmux$149_CMP $auto$opt_reduce.cc:134:opt_pmux$173 }
+    New ctrl vector for $pmux cell $procmux$139: { $procmux$153_CMP $auto$opt_reduce.cc:134:opt_pmux$175 }
+    New ctrl vector for $pmux cell $procmux$115: { $procmux$151_CMP $procmux$150_CMP $auto$opt_reduce.cc:134:opt_pmux$177 }
+    New ctrl vector for $pmux cell $procmux$107: $auto$opt_reduce.cc:134:opt_pmux$179
+  Optimizing cells in module \matvec_engine_2x2.
+  Optimizing cells in module \pe_array_2x2.
+  Optimizing cells in module \pe.
+  Optimizing cells in module \mac.
+Performed a total of 7 changes.
+
+4.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\matvec_engine_2x2'.
+<suppressed ~3 debug messages>
+Finding identical cells in module `\pe_array_2x2'.
+Finding identical cells in module `\pe'.
+Finding identical cells in module `\mac'.
+Removed a total of 1 cells.
+
+4.6. Executing OPT_DFF pass (perform DFF optimizations).
+Adding SRST signal on $procdff$158 ($dff) from module matvec_engine_2x2 (D = \n26_o, Q = \n132_q, rval = 8'00000000).
+Adding SRST signal on $procdff$159 ($dff) from module matvec_engine_2x2 (D = \n25_o, Q = \n131_q, rval = 8'00000000).
+Adding SRST signal on $procdff$160 ($dff) from module matvec_engine_2x2 (D = \n24_o, Q = \n130_q, rval = 8'00000000).
+Adding SRST signal on $procdff$154 ($dff) from module matvec_engine_2x2 (D = \next_state, Q = \n136_q, rval = 3'000).
+Adding SRST signal on $procdff$155 ($dff) from module matvec_engine_2x2 (D = \n29_o, Q = \n135_q, rval = 8'00000000).
+Adding SRST signal on $procdff$156 ($dff) from module matvec_engine_2x2 (D = \n28_o, Q = \n134_q, rval = 8'00000000).
+Adding SRST signal on $procdff$157 ($dff) from module matvec_engine_2x2 (D = \n27_o, Q = \n133_q, rval = 8'00000000).
+Adding SRST signal on $procdff$161 ($dff) from module pe (D = \n164_o, Q = \n174_q, rval = 8'00000000).
+Adding SRST signal on $procdff$162 ($dff) from module pe (D = \n163_o, Q = \n173_q, rval = 8'00000000).
+Adding SRST signal on $procdff$163 ($dff) from module mac (D = \n184_o, Q = \n189_q, rval = 0).
+
+4.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \matvec_engine_2x2..
+Finding unused cells or wires in module \pe_array_2x2..
+Finding unused cells or wires in module \pe..
+Finding unused cells or wires in module \mac..
+Removed 10 unused cells and 164 unused wires.
+<suppressed ~29 debug messages>
+
+4.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module mac.
+Optimizing module matvec_engine_2x2.
+Optimizing module pe.
+Optimizing module pe_array_2x2.
+
+4.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+4.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \mac..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \matvec_engine_2x2..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \pe..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \pe_array_2x2..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+<suppressed ~17 debug messages>
+
+4.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \mac.
+  Optimizing cells in module \matvec_engine_2x2.
+  Optimizing cells in module \pe.
+  Optimizing cells in module \pe_array_2x2.
+Performed a total of 0 changes.
+
+4.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\mac'.
+Finding identical cells in module `\matvec_engine_2x2'.
+Finding identical cells in module `\pe'.
+Finding identical cells in module `\pe_array_2x2'.
+Removed a total of 0 cells.
+
+4.13. Executing OPT_DFF pass (perform DFF optimizations).
+Adding EN signal on $auto$ff.cc:266:slice$189 ($sdff) from module mac (D = \n183_o, Q = \n189_q).
+Adding EN signal on $auto$ff.cc:266:slice$186 ($sdff) from module matvec_engine_2x2 (D = \w11, Q = \n133_q).
+Adding EN signal on $auto$ff.cc:266:slice$185 ($sdff) from module matvec_engine_2x2 (D = \x0, Q = \n134_q).
+Adding EN signal on $auto$ff.cc:266:slice$184 ($sdff) from module matvec_engine_2x2 (D = \x1, Q = \n135_q).
+Adding EN signal on $auto$ff.cc:266:slice$183 ($sdff) from module matvec_engine_2x2 (D = \next_state, Q = \n136_q).
+Adding EN signal on $auto$ff.cc:266:slice$182 ($sdff) from module matvec_engine_2x2 (D = \w00, Q = \n130_q).
+Adding EN signal on $auto$ff.cc:266:slice$181 ($sdff) from module matvec_engine_2x2 (D = \w01, Q = \n131_q).
+Adding EN signal on $auto$ff.cc:266:slice$180 ($sdff) from module matvec_engine_2x2 (D = \w10, Q = \n132_q).
+Adding EN signal on $auto$ff.cc:266:slice$188 ($sdff) from module pe (D = \a_in, Q = \n173_q).
+Adding EN signal on $auto$ff.cc:266:slice$187 ($sdff) from module pe (D = \b_in, Q = \n174_q).
+
+4.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \mac..
+Finding unused cells or wires in module \matvec_engine_2x2..
+Finding unused cells or wires in module \pe..
+Finding unused cells or wires in module \pe_array_2x2..
+Removed 9 unused cells and 9 unused wires.
+<suppressed ~18 debug messages>
+
+4.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module mac.
+Optimizing module matvec_engine_2x2.
+Optimizing module pe.
+Optimizing module pe_array_2x2.
+
+4.16. Rerunning OPT passes. (Maybe there is more to do..)
+
+4.17. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \mac..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \matvec_engine_2x2..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \pe..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \pe_array_2x2..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+<suppressed ~8 debug messages>
+
+4.18. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \mac.
+  Optimizing cells in module \matvec_engine_2x2.
+  Optimizing cells in module \pe.
+  Optimizing cells in module \pe_array_2x2.
+Performed a total of 0 changes.
+
+4.19. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\mac'.
+Finding identical cells in module `\matvec_engine_2x2'.
+Finding identical cells in module `\pe'.
+Finding identical cells in module `\pe_array_2x2'.
+Removed a total of 0 cells.
+
+4.20. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.21. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \mac..
+Finding unused cells or wires in module \matvec_engine_2x2..
+Finding unused cells or wires in module \pe..
+Finding unused cells or wires in module \pe_array_2x2..
+
+4.22. Executing OPT_EXPR pass (perform const folding).
+Optimizing module mac.
+Optimizing module matvec_engine_2x2.
+Optimizing module pe.
+Optimizing module pe_array_2x2.
+
+4.23. Finished OPT passes. (There is nothing left to do.)
+
+5. Printing statistics.
+
+=== mac ===
+
+   Number of wires:                 13
+   Number of wire bits:            227
+   Number of public wires:          13
+   Number of public wire bits:     227
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                  3
+     $add                            1
+     $mul                            1
+     $sdffe                          1
+
+=== matvec_engine_2x2 ===
+
+   Number of wires:                 76
+   Number of wire bits:            464
+   Number of public wires:          62
+   Number of public wire bits:     450
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                 38
+     $and                            1
+     $eq                            11
+     $logic_not                      1
+     $mux                            2
+     $ne                             1
+     $pmux                           7
+     $reduce_or                      7
+     $sdffe                          7
+     pe_array_2x2                    1
+
+=== pe ===
+
+   Number of wires:                 13
+   Number of wire bits:            131
+   Number of public wires:          13
+   Number of public wire bits:     131
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                  3
+     $sdffe                          2
+     mac                             1
+
+=== pe_array_2x2 ===
+
+   Number of wires:                 31
+   Number of wire bits:            419
+   Number of public wires:          31
+   Number of public wire bits:     419
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                  4
+     pe                              4
+
+=== design hierarchy ===
+
+   matvec_engine_2x2                 1
+     pe_array_2x2                    1
+       pe                            4
+         mac                         1
+
+   Number of wires:                211
+   Number of wire bits:           2315
+   Number of public wires:         197
+   Number of public wire bits:    2301
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                 57
+     $add                            4
+     $and                            1
+     $eq                            11
+     $logic_not                      1
+     $mul                            4
+     $mux                            2
+     $ne                             1
+     $pmux                           7
+     $reduce_or                      7
+     $sdffe                         19
+
+End of script. Logfile hash: d6176c6c60, CPU: user 0.08s system 0.01s, MEM: 11.25 MB peak
+Yosys 0.33 (git sha1 2584903a060)
+Time spent: 22% 5x opt_expr (0 sec), 18% 3x opt_clean (0 sec), ...

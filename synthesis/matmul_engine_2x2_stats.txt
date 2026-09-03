@@ -1,0 +1,723 @@
+
+ /----------------------------------------------------------------------------\
+ |                                                                            |
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |                                                                            |
+ |  Copyright (C) 2012 - 2020  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |                                                                            |
+ |  Permission to use, copy, modify, and/or distribute this software for any  |
+ |  purpose with or without fee is hereby granted, provided that the above    |
+ |  copyright notice and this permission notice appear in all copies.         |
+ |                                                                            |
+ |  THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES  |
+ |  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF          |
+ |  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR   |
+ |  ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES    |
+ |  WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN     |
+ |  ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF   |
+ |  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.            |
+ |                                                                            |
+ \----------------------------------------------------------------------------/
+
+ Yosys 0.33 (git sha1 2584903a060)
+
+
+-- Running command `read_verilog synthesis/matmul_engine_2x2_synth.v; hierarchy -top matmul_engine_2x2; proc; opt; stat' --
+
+1. Executing Verilog-2005 frontend: synthesis/matmul_engine_2x2_synth.v
+Parsing Verilog input from `synthesis/matmul_engine_2x2_synth.v' to AST representation.
+Generating RTLIL representation for module `\mac'.
+Generating RTLIL representation for module `\pe'.
+Generating RTLIL representation for module `\pe_array_2x2'.
+Generating RTLIL representation for module `\matmul_engine_2x2'.
+Successfully finished Verilog frontend.
+
+2. Executing HIERARCHY pass (managing design hierarchy).
+
+2.1. Analyzing design hierarchy..
+Top module:  \matmul_engine_2x2
+Used module:     \pe_array_2x2
+Used module:         \pe
+Used module:             \mac
+
+2.2. Analyzing design hierarchy..
+Top module:  \matmul_engine_2x2
+Used module:     \pe_array_2x2
+Used module:         \pe
+Used module:             \mac
+Removed 0 unused modules.
+
+3. Executing PROC pass (convert processes to netlists).
+
+3.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+3.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 1 switch rules as full_case in process $proc$synthesis/matmul_engine_2x2_synth.v:541$69 in module matmul_engine_2x2.
+Marked 1 switch rules as full_case in process $proc$synthesis/matmul_engine_2x2_synth.v:529$68 in module matmul_engine_2x2.
+Marked 1 switch rules as full_case in process $proc$synthesis/matmul_engine_2x2_synth.v:517$67 in module matmul_engine_2x2.
+Marked 1 switch rules as full_case in process $proc$synthesis/matmul_engine_2x2_synth.v:505$66 in module matmul_engine_2x2.
+Marked 1 switch rules as full_case in process $proc$synthesis/matmul_engine_2x2_synth.v:493$65 in module matmul_engine_2x2.
+Marked 1 switch rules as full_case in process $proc$synthesis/matmul_engine_2x2_synth.v:481$64 in module matmul_engine_2x2.
+Marked 1 switch rules as full_case in process $proc$synthesis/matmul_engine_2x2_synth.v:469$63 in module matmul_engine_2x2.
+Marked 1 switch rules as full_case in process $proc$synthesis/matmul_engine_2x2_synth.v:442$55 in module matmul_engine_2x2.
+Removed a total of 0 dead cases.
+
+3.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 0 redundant assignments.
+Promoted 61 assignments to connections.
+
+3.4. Executing PROC_INIT pass (extract init attributes).
+Found init rule in `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$103'.
+  Set init value: \n156_q = 3'000
+Found init rule in `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$102'.
+  Set init value: \n155_q = 8'00000000
+Found init rule in `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$101'.
+  Set init value: \n154_q = 8'00000000
+Found init rule in `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$100'.
+  Set init value: \n153_q = 8'00000000
+Found init rule in `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$99'.
+  Set init value: \n152_q = 8'00000000
+Found init rule in `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$98'.
+  Set init value: \n151_q = 8'00000000
+Found init rule in `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$97'.
+  Set init value: \n150_q = 8'00000000
+Found init rule in `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$96'.
+  Set init value: \n149_q = 8'00000000
+Found init rule in `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$95'.
+  Set init value: \n148_q = 8'00000000
+Found init rule in `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$94'.
+  Set init value: \next_state = 3'000
+Found init rule in `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$93'.
+  Set init value: \current_state = 3'000
+Found init rule in `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$92'.
+  Set init value: \array_reset = 1'0
+Found init rule in `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$91'.
+  Set init value: \array_enable = 1'0
+Found init rule in `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$90'.
+  Set init value: \array_b_col1 = 8'00000000
+Found init rule in `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$89'.
+  Set init value: \array_b_col0 = 8'00000000
+Found init rule in `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$88'.
+  Set init value: \array_a_row1 = 8'00000000
+Found init rule in `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$87'.
+  Set init value: \array_a_row0 = 8'00000000
+Found init rule in `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$86'.
+  Set init value: \b11_reg = 8'00000000
+Found init rule in `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$85'.
+  Set init value: \b10_reg = 8'00000000
+Found init rule in `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$84'.
+  Set init value: \b01_reg = 8'00000000
+Found init rule in `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$83'.
+  Set init value: \b00_reg = 8'00000000
+Found init rule in `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$82'.
+  Set init value: \a11_reg = 8'00000000
+Found init rule in `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$81'.
+  Set init value: \a10_reg = 8'00000000
+Found init rule in `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$80'.
+  Set init value: \a01_reg = 8'00000000
+Found init rule in `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$79'.
+  Set init value: \a00_reg = 8'00000000
+
+3.5. Executing PROC_ARST pass (detect async resets in processes).
+
+3.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~8 debug messages>
+
+3.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$103'.
+Creating decoders for process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$102'.
+Creating decoders for process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$101'.
+Creating decoders for process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$100'.
+Creating decoders for process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$99'.
+Creating decoders for process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$98'.
+Creating decoders for process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$97'.
+Creating decoders for process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$96'.
+Creating decoders for process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$95'.
+Creating decoders for process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$94'.
+Creating decoders for process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$93'.
+Creating decoders for process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$92'.
+Creating decoders for process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$91'.
+Creating decoders for process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$90'.
+Creating decoders for process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$89'.
+Creating decoders for process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$88'.
+Creating decoders for process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$87'.
+Creating decoders for process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$86'.
+Creating decoders for process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$85'.
+Creating decoders for process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$84'.
+Creating decoders for process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$83'.
+Creating decoders for process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$82'.
+Creating decoders for process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$81'.
+Creating decoders for process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$80'.
+Creating decoders for process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$79'.
+Creating decoders for process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:593$78'.
+Creating decoders for process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:588$77'.
+Creating decoders for process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:583$76'.
+Creating decoders for process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:578$75'.
+Creating decoders for process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:573$74'.
+Creating decoders for process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:568$73'.
+Creating decoders for process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:563$72'.
+Creating decoders for process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:558$71'.
+Creating decoders for process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:553$70'.
+Creating decoders for process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:541$69'.
+     1/1: $1\n145_o[0:0]
+Creating decoders for process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:529$68'.
+     1/1: $1\n140_o[0:0]
+Creating decoders for process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:517$67'.
+     1/1: $1\n132_o[7:0]
+Creating decoders for process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:505$66'.
+     1/1: $1\n127_o[7:0]
+Creating decoders for process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:493$65'.
+     1/1: $1\n122_o[7:0]
+Creating decoders for process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:481$64'.
+     1/1: $1\n117_o[7:0]
+Creating decoders for process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:469$63'.
+     1/1: $1\n112_o[0:0]
+Creating decoders for process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:442$55'.
+     1/1: $1\n91_o[2:0]
+Creating decoders for process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:365$27'.
+Creating decoders for process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:360$26'.
+Creating decoders for process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:347$25'.
+Creating decoders for process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:342$24'.
+Creating decoders for process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:337$23'.
+Creating decoders for process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:332$22'.
+Creating decoders for process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:327$21'.
+Creating decoders for process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:322$20'.
+Creating decoders for process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:317$19'.
+Creating decoders for process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:312$18'.
+Creating decoders for process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:307$17'.
+Creating decoders for process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:302$16'.
+Creating decoders for process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:297$15'.
+Creating decoders for process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:292$14'.
+Creating decoders for process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:287$13'.
+Creating decoders for process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:282$12'.
+Creating decoders for process `\pe.$proc$synthesis/matmul_engine_2x2_synth.v:84$11'.
+Creating decoders for process `\pe.$proc$synthesis/matmul_engine_2x2_synth.v:81$10'.
+Creating decoders for process `\mac.$proc$synthesis/matmul_engine_2x2_synth.v:35$5'.
+
+3.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\matmul_engine_2x2.\n145_o' from process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:541$69'.
+No latch inferred for signal `\matmul_engine_2x2.\n140_o' from process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:529$68'.
+No latch inferred for signal `\matmul_engine_2x2.\n132_o' from process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:517$67'.
+No latch inferred for signal `\matmul_engine_2x2.\n127_o' from process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:505$66'.
+No latch inferred for signal `\matmul_engine_2x2.\n122_o' from process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:493$65'.
+No latch inferred for signal `\matmul_engine_2x2.\n117_o' from process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:481$64'.
+No latch inferred for signal `\matmul_engine_2x2.\n112_o' from process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:469$63'.
+No latch inferred for signal `\matmul_engine_2x2.\n91_o' from process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:442$55'.
+No latch inferred for signal `\matmul_engine_2x2.\next_state' from process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:365$27'.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\next_state [0]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:365$27`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\next_state [1]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:365$27`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\next_state [2]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:365$27`.
+No latch inferred for signal `\matmul_engine_2x2.\current_state' from process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:360$26'.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\current_state [0]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:360$26`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\current_state [1]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:360$26`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\current_state [2]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:360$26`.
+No latch inferred for signal `\matmul_engine_2x2.\array_reset' from process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:347$25'.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\array_reset` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:347$25`.
+No latch inferred for signal `\matmul_engine_2x2.\array_enable' from process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:342$24'.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\array_enable` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:342$24`.
+No latch inferred for signal `\matmul_engine_2x2.\array_b_col1' from process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:337$23'.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\array_b_col1 [0]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:337$23`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\array_b_col1 [1]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:337$23`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\array_b_col1 [2]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:337$23`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\array_b_col1 [3]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:337$23`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\array_b_col1 [4]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:337$23`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\array_b_col1 [5]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:337$23`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\array_b_col1 [6]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:337$23`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\array_b_col1 [7]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:337$23`.
+No latch inferred for signal `\matmul_engine_2x2.\array_b_col0' from process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:332$22'.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\array_b_col0 [0]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:332$22`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\array_b_col0 [1]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:332$22`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\array_b_col0 [2]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:332$22`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\array_b_col0 [3]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:332$22`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\array_b_col0 [4]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:332$22`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\array_b_col0 [5]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:332$22`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\array_b_col0 [6]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:332$22`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\array_b_col0 [7]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:332$22`.
+No latch inferred for signal `\matmul_engine_2x2.\array_a_row1' from process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:327$21'.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\array_a_row1 [0]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:327$21`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\array_a_row1 [1]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:327$21`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\array_a_row1 [2]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:327$21`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\array_a_row1 [3]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:327$21`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\array_a_row1 [4]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:327$21`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\array_a_row1 [5]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:327$21`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\array_a_row1 [6]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:327$21`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\array_a_row1 [7]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:327$21`.
+No latch inferred for signal `\matmul_engine_2x2.\array_a_row0' from process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:322$20'.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\array_a_row0 [0]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:322$20`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\array_a_row0 [1]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:322$20`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\array_a_row0 [2]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:322$20`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\array_a_row0 [3]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:322$20`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\array_a_row0 [4]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:322$20`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\array_a_row0 [5]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:322$20`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\array_a_row0 [6]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:322$20`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\array_a_row0 [7]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:322$20`.
+No latch inferred for signal `\matmul_engine_2x2.\b11_reg' from process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:317$19'.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\b11_reg [0]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:317$19`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\b11_reg [1]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:317$19`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\b11_reg [2]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:317$19`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\b11_reg [3]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:317$19`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\b11_reg [4]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:317$19`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\b11_reg [5]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:317$19`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\b11_reg [6]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:317$19`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\b11_reg [7]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:317$19`.
+No latch inferred for signal `\matmul_engine_2x2.\b10_reg' from process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:312$18'.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\b10_reg [0]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:312$18`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\b10_reg [1]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:312$18`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\b10_reg [2]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:312$18`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\b10_reg [3]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:312$18`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\b10_reg [4]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:312$18`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\b10_reg [5]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:312$18`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\b10_reg [6]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:312$18`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\b10_reg [7]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:312$18`.
+No latch inferred for signal `\matmul_engine_2x2.\b01_reg' from process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:307$17'.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\b01_reg [0]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:307$17`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\b01_reg [1]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:307$17`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\b01_reg [2]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:307$17`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\b01_reg [3]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:307$17`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\b01_reg [4]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:307$17`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\b01_reg [5]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:307$17`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\b01_reg [6]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:307$17`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\b01_reg [7]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:307$17`.
+No latch inferred for signal `\matmul_engine_2x2.\b00_reg' from process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:302$16'.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\b00_reg [0]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:302$16`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\b00_reg [1]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:302$16`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\b00_reg [2]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:302$16`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\b00_reg [3]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:302$16`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\b00_reg [4]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:302$16`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\b00_reg [5]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:302$16`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\b00_reg [6]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:302$16`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\b00_reg [7]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:302$16`.
+No latch inferred for signal `\matmul_engine_2x2.\a11_reg' from process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:297$15'.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\a11_reg [0]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:297$15`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\a11_reg [1]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:297$15`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\a11_reg [2]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:297$15`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\a11_reg [3]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:297$15`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\a11_reg [4]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:297$15`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\a11_reg [5]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:297$15`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\a11_reg [6]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:297$15`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\a11_reg [7]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:297$15`.
+No latch inferred for signal `\matmul_engine_2x2.\a10_reg' from process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:292$14'.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\a10_reg [0]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:292$14`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\a10_reg [1]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:292$14`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\a10_reg [2]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:292$14`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\a10_reg [3]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:292$14`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\a10_reg [4]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:292$14`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\a10_reg [5]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:292$14`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\a10_reg [6]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:292$14`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\a10_reg [7]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:292$14`.
+No latch inferred for signal `\matmul_engine_2x2.\a01_reg' from process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:287$13'.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\a01_reg [0]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:287$13`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\a01_reg [1]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:287$13`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\a01_reg [2]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:287$13`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\a01_reg [3]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:287$13`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\a01_reg [4]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:287$13`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\a01_reg [5]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:287$13`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\a01_reg [6]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:287$13`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\a01_reg [7]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:287$13`.
+No latch inferred for signal `\matmul_engine_2x2.\a00_reg' from process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:282$12'.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\a00_reg [0]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:282$12`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\a00_reg [1]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:282$12`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\a00_reg [2]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:282$12`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\a00_reg [3]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:282$12`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\a00_reg [4]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:282$12`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\a00_reg [5]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:282$12`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\a00_reg [6]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:282$12`.
+Removing init bit 1'0 for non-memory siginal `\matmul_engine_2x2.\a00_reg [7]` in process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:282$12`.
+
+3.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\matmul_engine_2x2.\n156_q' using process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:593$78'.
+  created $dff cell `$procdff$176' with positive edge clock.
+Creating register for signal `\matmul_engine_2x2.\n155_q' using process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:588$77'.
+  created $dff cell `$procdff$177' with positive edge clock.
+Creating register for signal `\matmul_engine_2x2.\n154_q' using process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:583$76'.
+  created $dff cell `$procdff$178' with positive edge clock.
+Creating register for signal `\matmul_engine_2x2.\n153_q' using process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:578$75'.
+  created $dff cell `$procdff$179' with positive edge clock.
+Creating register for signal `\matmul_engine_2x2.\n152_q' using process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:573$74'.
+  created $dff cell `$procdff$180' with positive edge clock.
+Creating register for signal `\matmul_engine_2x2.\n151_q' using process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:568$73'.
+  created $dff cell `$procdff$181' with positive edge clock.
+Creating register for signal `\matmul_engine_2x2.\n150_q' using process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:563$72'.
+  created $dff cell `$procdff$182' with positive edge clock.
+Creating register for signal `\matmul_engine_2x2.\n149_q' using process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:558$71'.
+  created $dff cell `$procdff$183' with positive edge clock.
+Creating register for signal `\matmul_engine_2x2.\n148_q' using process `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:553$70'.
+  created $dff cell `$procdff$184' with positive edge clock.
+Creating register for signal `\pe.\n194_q' using process `\pe.$proc$synthesis/matmul_engine_2x2_synth.v:84$11'.
+  created $dff cell `$procdff$185' with positive edge clock.
+Creating register for signal `\pe.\n193_q' using process `\pe.$proc$synthesis/matmul_engine_2x2_synth.v:81$10'.
+  created $dff cell `$procdff$186' with positive edge clock.
+Creating register for signal `\mac.\n209_q' using process `\mac.$proc$synthesis/matmul_engine_2x2_synth.v:35$5'.
+  created $dff cell `$procdff$187' with positive edge clock.
+
+3.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+3.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Removing empty process `matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$103'.
+Removing empty process `matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$102'.
+Removing empty process `matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$101'.
+Removing empty process `matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$100'.
+Removing empty process `matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$99'.
+Removing empty process `matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$98'.
+Removing empty process `matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$97'.
+Removing empty process `matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$96'.
+Removing empty process `matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$95'.
+Removing empty process `matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$94'.
+Removing empty process `matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$93'.
+Removing empty process `matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$92'.
+Removing empty process `matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$91'.
+Removing empty process `matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$90'.
+Removing empty process `matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$89'.
+Removing empty process `matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$88'.
+Removing empty process `matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$87'.
+Removing empty process `matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$86'.
+Removing empty process `matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$85'.
+Removing empty process `matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$84'.
+Removing empty process `matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$83'.
+Removing empty process `matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$82'.
+Removing empty process `matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$81'.
+Removing empty process `matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$80'.
+Removing empty process `matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:0$79'.
+Removing empty process `matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:593$78'.
+Removing empty process `matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:588$77'.
+Removing empty process `matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:583$76'.
+Removing empty process `matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:578$75'.
+Removing empty process `matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:573$74'.
+Removing empty process `matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:568$73'.
+Removing empty process `matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:563$72'.
+Removing empty process `matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:558$71'.
+Removing empty process `matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:553$70'.
+Found and cleaned up 1 empty switch in `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:541$69'.
+Removing empty process `matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:541$69'.
+Found and cleaned up 1 empty switch in `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:529$68'.
+Removing empty process `matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:529$68'.
+Found and cleaned up 1 empty switch in `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:517$67'.
+Removing empty process `matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:517$67'.
+Found and cleaned up 1 empty switch in `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:505$66'.
+Removing empty process `matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:505$66'.
+Found and cleaned up 1 empty switch in `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:493$65'.
+Removing empty process `matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:493$65'.
+Found and cleaned up 1 empty switch in `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:481$64'.
+Removing empty process `matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:481$64'.
+Found and cleaned up 1 empty switch in `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:469$63'.
+Removing empty process `matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:469$63'.
+Found and cleaned up 1 empty switch in `\matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:442$55'.
+Removing empty process `matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:442$55'.
+Removing empty process `matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:365$27'.
+Removing empty process `matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:360$26'.
+Removing empty process `matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:347$25'.
+Removing empty process `matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:342$24'.
+Removing empty process `matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:337$23'.
+Removing empty process `matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:332$22'.
+Removing empty process `matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:327$21'.
+Removing empty process `matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:322$20'.
+Removing empty process `matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:317$19'.
+Removing empty process `matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:312$18'.
+Removing empty process `matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:307$17'.
+Removing empty process `matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:302$16'.
+Removing empty process `matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:297$15'.
+Removing empty process `matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:292$14'.
+Removing empty process `matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:287$13'.
+Removing empty process `matmul_engine_2x2.$proc$synthesis/matmul_engine_2x2_synth.v:282$12'.
+Removing empty process `pe.$proc$synthesis/matmul_engine_2x2_synth.v:84$11'.
+Removing empty process `pe.$proc$synthesis/matmul_engine_2x2_synth.v:81$10'.
+Removing empty process `mac.$proc$synthesis/matmul_engine_2x2_synth.v:35$5'.
+Cleaned up 8 empty switches.
+
+3.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module matmul_engine_2x2.
+<suppressed ~3 debug messages>
+Optimizing module pe_array_2x2.
+Optimizing module pe.
+Optimizing module mac.
+
+4. Executing OPT pass (performing simple optimizations).
+
+4.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module matmul_engine_2x2.
+Optimizing module pe_array_2x2.
+Optimizing module pe.
+Optimizing module mac.
+
+4.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\matmul_engine_2x2'.
+<suppressed ~171 debug messages>
+Finding identical cells in module `\pe_array_2x2'.
+Finding identical cells in module `\pe'.
+Finding identical cells in module `\mac'.
+Removed a total of 57 cells.
+
+4.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \matmul_engine_2x2..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \pe_array_2x2..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \pe..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \mac..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~19 debug messages>
+
+4.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \matmul_engine_2x2.
+    New ctrl vector for $pmux cell $procmux$150: { $procmux$172_CMP $procmux$171_CMP $auto$opt_reduce.cc:134:opt_pmux$189 }
+    New ctrl vector for $pmux cell $procmux$114: { $auto$opt_reduce.cc:134:opt_pmux$193 $auto$opt_reduce.cc:134:opt_pmux$191 }
+    New ctrl vector for $pmux cell $procmux$141: { $procmux$173_CMP $procmux$172_CMP $auto$opt_reduce.cc:134:opt_pmux$195 }
+    New ctrl vector for $pmux cell $procmux$105: { $procmux$161_CMP $auto$opt_reduce.cc:134:opt_pmux$197 }
+    New ctrl vector for $pmux cell $procmux$159: { $procmux$175_CMP $auto$opt_reduce.cc:134:opt_pmux$199 }
+    New ctrl vector for $pmux cell $procmux$132: { $procmux$172_CMP $procmux$171_CMP $auto$opt_reduce.cc:134:opt_pmux$201 }
+    New ctrl vector for $pmux cell $procmux$123: { $procmux$173_CMP $procmux$172_CMP $auto$opt_reduce.cc:134:opt_pmux$203 }
+  Optimizing cells in module \matmul_engine_2x2.
+  Optimizing cells in module \pe_array_2x2.
+  Optimizing cells in module \pe.
+  Optimizing cells in module \mac.
+Performed a total of 7 changes.
+
+4.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\matmul_engine_2x2'.
+<suppressed ~6 debug messages>
+Finding identical cells in module `\pe_array_2x2'.
+Finding identical cells in module `\pe'.
+Finding identical cells in module `\mac'.
+Removed a total of 2 cells.
+
+4.6. Executing OPT_DFF pass (perform DFF optimizations).
+Adding SRST signal on $procdff$182 ($dff) from module matmul_engine_2x2 (D = \n32_o, Q = \n150_q, rval = 8'00000000).
+Adding SRST signal on $procdff$183 ($dff) from module matmul_engine_2x2 (D = \n31_o, Q = \n149_q, rval = 8'00000000).
+Adding SRST signal on $procdff$184 ($dff) from module matmul_engine_2x2 (D = \n30_o, Q = \n148_q, rval = 8'00000000).
+Adding SRST signal on $procdff$176 ($dff) from module matmul_engine_2x2 (D = \next_state, Q = \n156_q, rval = 3'000).
+Adding SRST signal on $procdff$177 ($dff) from module matmul_engine_2x2 (D = \n37_o, Q = \n155_q, rval = 8'00000000).
+Adding SRST signal on $procdff$178 ($dff) from module matmul_engine_2x2 (D = \n36_o, Q = \n154_q, rval = 8'00000000).
+Adding SRST signal on $procdff$179 ($dff) from module matmul_engine_2x2 (D = \n35_o, Q = \n153_q, rval = 8'00000000).
+Adding SRST signal on $procdff$180 ($dff) from module matmul_engine_2x2 (D = \n34_o, Q = \n152_q, rval = 8'00000000).
+Adding SRST signal on $procdff$181 ($dff) from module matmul_engine_2x2 (D = \n33_o, Q = \n151_q, rval = 8'00000000).
+Adding SRST signal on $procdff$185 ($dff) from module pe (D = \n184_o, Q = \n194_q, rval = 8'00000000).
+Adding SRST signal on $procdff$186 ($dff) from module pe (D = \n183_o, Q = \n193_q, rval = 8'00000000).
+Adding SRST signal on $procdff$187 ($dff) from module mac (D = \n204_o, Q = \n209_q, rval = 0).
+
+4.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \matmul_engine_2x2..
+Finding unused cells or wires in module \pe_array_2x2..
+Finding unused cells or wires in module \pe..
+Finding unused cells or wires in module \mac..
+Removed 12 unused cells and 186 unused wires.
+<suppressed ~31 debug messages>
+
+4.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module mac.
+Optimizing module matmul_engine_2x2.
+Optimizing module pe.
+Optimizing module pe_array_2x2.
+
+4.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+4.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \mac..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \matmul_engine_2x2..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \pe..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \pe_array_2x2..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+<suppressed ~19 debug messages>
+
+4.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \mac.
+  Optimizing cells in module \matmul_engine_2x2.
+  Optimizing cells in module \pe.
+  Optimizing cells in module \pe_array_2x2.
+Performed a total of 0 changes.
+
+4.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\mac'.
+Finding identical cells in module `\matmul_engine_2x2'.
+Finding identical cells in module `\pe'.
+Finding identical cells in module `\pe_array_2x2'.
+Removed a total of 0 cells.
+
+4.13. Executing OPT_DFF pass (perform DFF optimizations).
+Adding EN signal on $auto$ff.cc:266:slice$215 ($sdff) from module mac (D = \n203_o, Q = \n209_q).
+Adding EN signal on $auto$ff.cc:266:slice$212 ($sdff) from module matmul_engine_2x2 (D = \a11, Q = \n151_q).
+Adding EN signal on $auto$ff.cc:266:slice$211 ($sdff) from module matmul_engine_2x2 (D = \b00, Q = \n152_q).
+Adding EN signal on $auto$ff.cc:266:slice$210 ($sdff) from module matmul_engine_2x2 (D = \b01, Q = \n153_q).
+Adding EN signal on $auto$ff.cc:266:slice$209 ($sdff) from module matmul_engine_2x2 (D = \b10, Q = \n154_q).
+Adding EN signal on $auto$ff.cc:266:slice$208 ($sdff) from module matmul_engine_2x2 (D = \b11, Q = \n155_q).
+Adding EN signal on $auto$ff.cc:266:slice$207 ($sdff) from module matmul_engine_2x2 (D = \next_state, Q = \n156_q).
+Adding EN signal on $auto$ff.cc:266:slice$206 ($sdff) from module matmul_engine_2x2 (D = \a00, Q = \n148_q).
+Adding EN signal on $auto$ff.cc:266:slice$205 ($sdff) from module matmul_engine_2x2 (D = \a01, Q = \n149_q).
+Adding EN signal on $auto$ff.cc:266:slice$204 ($sdff) from module matmul_engine_2x2 (D = \a10, Q = \n150_q).
+Adding EN signal on $auto$ff.cc:266:slice$214 ($sdff) from module pe (D = \a_in, Q = \n193_q).
+Adding EN signal on $auto$ff.cc:266:slice$213 ($sdff) from module pe (D = \b_in, Q = \n194_q).
+
+4.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \mac..
+Finding unused cells or wires in module \matmul_engine_2x2..
+Finding unused cells or wires in module \pe..
+Finding unused cells or wires in module \pe_array_2x2..
+Removed 11 unused cells and 11 unused wires.
+<suppressed ~22 debug messages>
+
+4.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module mac.
+Optimizing module matmul_engine_2x2.
+Optimizing module pe.
+Optimizing module pe_array_2x2.
+
+4.16. Rerunning OPT passes. (Maybe there is more to do..)
+
+4.17. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \mac..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \matmul_engine_2x2..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \pe..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \pe_array_2x2..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+<suppressed ~8 debug messages>
+
+4.18. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \mac.
+  Optimizing cells in module \matmul_engine_2x2.
+  Optimizing cells in module \pe.
+  Optimizing cells in module \pe_array_2x2.
+Performed a total of 0 changes.
+
+4.19. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\mac'.
+Finding identical cells in module `\matmul_engine_2x2'.
+Finding identical cells in module `\pe'.
+Finding identical cells in module `\pe_array_2x2'.
+Removed a total of 0 cells.
+
+4.20. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.21. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \mac..
+Finding unused cells or wires in module \matmul_engine_2x2..
+Finding unused cells or wires in module \pe..
+Finding unused cells or wires in module \pe_array_2x2..
+
+4.22. Executing OPT_EXPR pass (perform const folding).
+Optimizing module mac.
+Optimizing module matmul_engine_2x2.
+Optimizing module pe.
+Optimizing module pe_array_2x2.
+
+4.23. Finished OPT passes. (There is nothing left to do.)
+
+5. Printing statistics.
+
+=== mac ===
+
+   Number of wires:                 13
+   Number of wire bits:            227
+   Number of public wires:          13
+   Number of public wire bits:     227
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                  3
+     $add                            1
+     $mul                            1
+     $sdffe                          1
+
+=== matmul_engine_2x2 ===
+
+   Number of wires:                 90
+   Number of wire bits:            708
+   Number of public wires:          76
+   Number of public wire bits:     694
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                 41
+     $and                            1
+     $eq                            13
+     $logic_not                      1
+     $mux                            1
+     $ne                             1
+     $pmux                           8
+     $reduce_or                      6
+     $sdffe                          9
+     pe_array_2x2                    1
+
+=== pe ===
+
+   Number of wires:                 13
+   Number of wire bits:            131
+   Number of public wires:          13
+   Number of public wire bits:     131
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                  3
+     $sdffe                          2
+     mac                             1
+
+=== pe_array_2x2 ===
+
+   Number of wires:                 31
+   Number of wire bits:            419
+   Number of public wires:          31
+   Number of public wire bits:     419
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                  4
+     pe                              4
+
+=== design hierarchy ===
+
+   matmul_engine_2x2                 1
+     pe_array_2x2                    1
+       pe                            4
+         mac                         1
+
+   Number of wires:                225
+   Number of wire bits:           2559
+   Number of public wires:         211
+   Number of public wire bits:    2545
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                 60
+     $add                            4
+     $and                            1
+     $eq                            13
+     $logic_not                      1
+     $mul                            4
+     $mux                            1
+     $ne                             1
+     $pmux                           8
+     $reduce_or                      6
+     $sdffe                         21
+
+End of script. Logfile hash: 1fc707b956, CPU: user 0.08s system 0.00s, MEM: 11.38 MB peak
+Yosys 0.33 (git sha1 2584903a060)
+Time spent: 22% 3x opt_clean (0 sec), 22% 5x opt_expr (0 sec), ...
