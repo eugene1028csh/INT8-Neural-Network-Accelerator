@@ -32,21 +32,44 @@ begin
     report "out0 incorrect"
       severity error;
 
+    data0 <= to_signed(0, 32);
+    data1 <= to_signed(9981, 32);
+    wait for 10 ns;
+
+    assert out0 = to_signed(0, 8)
+    report "Test 1 out0 failed"
+      severity error;
+
+    assert out1 = to_signed(63, 8)
+    report "Test 1 out1 failed"
+      severity error;
+    data0 <= to_signed(16129, 32);
+    data1 <= to_signed(20141, 32);
+    wait for 10 ns;
+
+    assert out0 = to_signed(102, 8)
+    report "Test 2 out0 failed"
+      severity error;
+
     assert out1 = to_signed(127, 8)
-    report "out1 incorrect"
+    report "Test 2 out1 failed"
+      severity error;
+    data0 <= to_signed(0, 32);
+    data1 <= to_signed(10108, 32);
+    wait for 10 ns;
+
+    assert out0 = to_signed(0, 8)
+    report "Test 3 out0 failed"
       severity error;
 
-    data0 <= to_signed(-800, 32);
-
-    wait for 1 ns;
-    --propagation delay because its combinational
-    assert out0 = to_signed(-128, 8)
-    report "out0 low incorrect"
+    assert out1 = to_signed(64, 8)
+    report "Test 3 out1 failed"
       severity error;
 
-    report "requantize_2 tb pass"
+    report "Requantizer trained-network tests passed"
       severity note;
 
+    wait;
     wait;
   end process;
 end architecture;

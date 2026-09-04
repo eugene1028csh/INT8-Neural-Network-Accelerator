@@ -12,12 +12,23 @@ end entity;
 architecture rtl of requantize_2 is
 begin
   process (all)
+    variable product0 : signed(47 downto 0);
+    variable product1 : signed(47 downto 0);
     variable scaled0 : signed(31 downto 0);
     variable scaled1 : signed(31 downto 0);
   begin
+    --Fixed point approx
+    --requant multiplier 414/2^16
+    product0 := data0 * to_signed(414, 16);
+    product1 := data1 * to_signed(414, 16);
 
-    scaled0 := SHIFT_RIGHT(data0, 2);
-    scaled1 := SHIFT_RIGHT(data1, 2);
+    --Add half of 2^16 for rounding
+    product0 := product0 + to_signed(32768, 48);
+    product1 := product1 + to_signed(32768, 48);
+
+    --Divide by 2^16
+    scaled0 := resize(SHIFT_RIGHT(product0,16), 32);
+    scaled1 := resize(SHIFT_RIGHT(product1,16), 32);
 
     if scaled0 > to_signed(127, 32) then
         out0 <= to_signed(127, 8);
