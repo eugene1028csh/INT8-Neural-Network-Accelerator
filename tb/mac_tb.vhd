@@ -31,7 +31,7 @@ begin
       result => result
     );
 
-  --tests go here
+  --tests
   stimulus : process
   begin
     --reset
