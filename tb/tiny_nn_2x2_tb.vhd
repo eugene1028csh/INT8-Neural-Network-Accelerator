@@ -59,16 +59,11 @@ begin
 
   process
   begin
-
-    -- ====================================================
-    -- Trained quantized parameters
-    -- ====================================================
-
+    -- Trained quantized parameters=
     w1_00 <= to_signed(127, 8);
     w1_01 <= to_signed(-127, 8);
     w1_10 <= to_signed(80, 8);
     w1_11 <= to_signed(-79, 8);
-
     b1_0 <= to_signed(0, 32);
     b1_1 <= to_signed(9981, 32);
 
@@ -76,7 +71,6 @@ begin
     w2_01 <= to_signed(100, 8);
     w2_10 <= to_signed(127, 8);
     w2_11 <= to_signed(-81, 8);
-
     b2_0 <= to_signed(-2556, 32);
     b2_1 <= to_signed(2556, 32);
 
@@ -85,13 +79,12 @@ begin
     wait for 20 ns;
     reset <= '0';
     wait for 10 ns;
-    -- ====================================================
-    -- XOR: [0,0] -> class 0
-    -- ====================================================
 
+    -- XOR: [0,0] -> class 0
     x0 <= to_signed(0, 8);
     x1 <= to_signed(0, 8);
 
+    --start
     start <= '1';
     wait until rising_edge(clk);
     start <= '0';
@@ -108,10 +101,8 @@ begin
       severity error;
 
     wait until rising_edge(clk);
-    -- ====================================================
-    -- XOR: [0,1] -> class 1
-    -- ====================================================
 
+    -- XOR: [0,1] -> class 1
     x0 <= to_signed(0, 8);
     x1 <= to_signed(127, 8);
 
@@ -131,10 +122,8 @@ begin
       severity error;
 
     wait until rising_edge(clk);
-    -- ====================================================
+   
     -- XOR: [1,0] -> class 1
-    -- ====================================================
-
     x0 <= to_signed(127, 8);
     x1 <= to_signed(0, 8);
 
@@ -154,10 +143,8 @@ begin
       severity error;
 
     wait until rising_edge(clk);
-    -- ====================================================
-    -- XOR: [1,1] -> class 0
-    -- ====================================================
 
+    -- XOR: [1,1] -> class 0
     x0 <= to_signed(127, 8);
     x1 <= to_signed(127, 8);
 
