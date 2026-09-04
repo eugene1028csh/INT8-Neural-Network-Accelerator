@@ -95,11 +95,11 @@ begin
 
     wait until done = '1';
     wait for 1 ns;
-
+    
     report "VHDL_OUTPUT y0=" & integer'image(to_integer(y0)) &
-    -- integer'image(to_integer(y0)) converts the signed matrix output values, 
-    -- into an integer and to a string in the report window, so python can verify from thr
-      " y1 =" & integer'image(to_integer(y1))
+      -- integer'image(to_integer(y0)) converts the signed matrix output values, 
+      -- into an integer and to a string in the report window, so python can verify from thr
+      " y1=" & integer'image(to_integer(y1))
       severity note;
 
     assert y0 = to_signed(13, 32)
