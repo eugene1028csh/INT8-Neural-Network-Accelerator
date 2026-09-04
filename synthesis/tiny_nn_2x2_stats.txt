@@ -1,0 +1,1252 @@
+
+ /----------------------------------------------------------------------------\
+ |                                                                            |
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |                                                                            |
+ |  Copyright (C) 2012 - 2020  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |                                                                            |
+ |  Permission to use, copy, modify, and/or distribute this software for any  |
+ |  purpose with or without fee is hereby granted, provided that the above    |
+ |  copyright notice and this permission notice appear in all copies.         |
+ |                                                                            |
+ |  THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES  |
+ |  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF          |
+ |  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR   |
+ |  ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES    |
+ |  WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN     |
+ |  ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF   |
+ |  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.            |
+ |                                                                            |
+ \----------------------------------------------------------------------------/
+
+ Yosys 0.33 (git sha1 2584903a060)
+
+
+-- Running command `read_verilog synthesis/tiny_nn_2x2_synth.v; hierarchy -top tiny_nn_2x2; proc; opt; stat' --
+
+1. Executing Verilog-2005 frontend: synthesis/tiny_nn_2x2_synth.v
+Parsing Verilog input from `synthesis/tiny_nn_2x2_synth.v' to AST representation.
+Generating RTLIL representation for module `\mac'.
+Generating RTLIL representation for module `\pe'.
+Generating RTLIL representation for module `\pe_array_2x2'.
+Generating RTLIL representation for module `\relu_2'.
+Generating RTLIL representation for module `\bias_add_2'.
+Generating RTLIL representation for module `\matvec_engine_2x2'.
+Generating RTLIL representation for module `\requantize_2'.
+Generating RTLIL representation for module `\dense_layer_2x2'.
+Generating RTLIL representation for module `\tiny_nn_2x2'.
+Successfully finished Verilog frontend.
+
+2. Executing HIERARCHY pass (managing design hierarchy).
+
+2.1. Analyzing design hierarchy..
+Top module:  \tiny_nn_2x2
+Used module:     \dense_layer_2x2
+Used module:         \relu_2
+Used module:         \bias_add_2
+Used module:         \matvec_engine_2x2
+Used module:             \pe_array_2x2
+Used module:                 \pe
+Used module:                     \mac
+Used module:     \requantize_2
+
+2.2. Analyzing design hierarchy..
+Top module:  \tiny_nn_2x2
+Used module:     \dense_layer_2x2
+Used module:         \relu_2
+Used module:         \bias_add_2
+Used module:         \matvec_engine_2x2
+Used module:             \pe_array_2x2
+Used module:                 \pe
+Used module:                     \mac
+Used module:     \requantize_2
+Removed 0 unused modules.
+
+3. Executing PROC pass (convert processes to netlists).
+
+3.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+3.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 1 switch rules as full_case in process $proc$synthesis/tiny_nn_2x2_synth.v:905$138 in module tiny_nn_2x2.
+Marked 1 switch rules as full_case in process $proc$synthesis/tiny_nn_2x2_synth.v:897$137 in module tiny_nn_2x2.
+Marked 1 switch rules as full_case in process $proc$synthesis/tiny_nn_2x2_synth.v:889$136 in module tiny_nn_2x2.
+Marked 1 switch rules as full_case in process $proc$synthesis/tiny_nn_2x2_synth.v:871$132 in module tiny_nn_2x2.
+Marked 1 switch rules as full_case in process $proc$synthesis/tiny_nn_2x2_synth.v:528$65 in module matvec_engine_2x2.
+Marked 1 switch rules as full_case in process $proc$synthesis/tiny_nn_2x2_synth.v:517$64 in module matvec_engine_2x2.
+Marked 1 switch rules as full_case in process $proc$synthesis/tiny_nn_2x2_synth.v:506$63 in module matvec_engine_2x2.
+Marked 1 switch rules as full_case in process $proc$synthesis/tiny_nn_2x2_synth.v:495$62 in module matvec_engine_2x2.
+Marked 1 switch rules as full_case in process $proc$synthesis/tiny_nn_2x2_synth.v:484$61 in module matvec_engine_2x2.
+Marked 1 switch rules as full_case in process $proc$synthesis/tiny_nn_2x2_synth.v:473$60 in module matvec_engine_2x2.
+Marked 1 switch rules as full_case in process $proc$synthesis/tiny_nn_2x2_synth.v:462$59 in module matvec_engine_2x2.
+Marked 1 switch rules as full_case in process $proc$synthesis/tiny_nn_2x2_synth.v:438$52 in module matvec_engine_2x2.
+Removed a total of 0 dead cases.
+
+3.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 0 redundant assignments.
+Promoted 87 assignments to connections.
+
+3.4. Executing PROC_INIT pass (extract init attributes).
+Found init rule in `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$150'.
+  Set init value: \n74_q = 3'000
+Found init rule in `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$149'.
+  Set init value: \next_state = 3'000
+Found init rule in `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$148'.
+  Set init value: \current_state = 3'000
+Found init rule in `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$147'.
+  Set init value: \l2_done = 1'0
+Found init rule in `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$146'.
+  Set init value: \l2_start = 1'0
+Found init rule in `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$145'.
+  Set init value: \l1_done = 1'0
+Found init rule in `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$144'.
+  Set init value: \l1_start = 1'0
+Found init rule in `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$143'.
+  Set init value: \hidden_q1 = 8'00000000
+Found init rule in `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$142'.
+  Set init value: \hidden_q0 = 8'00000000
+Found init rule in `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$141'.
+  Set init value: \l1_out1 = 0
+Found init rule in `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$140'.
+  Set init value: \l1_out0 = 0
+Found init rule in `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$111'.
+  Set init value: \bias_result1 = 0
+Found init rule in `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$110'.
+  Set init value: \bias_result0 = 0
+Found init rule in `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$109'.
+  Set init value: \matvec_result1 = 0
+Found init rule in `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$108'.
+  Set init value: \matvec_result0 = 0
+Found init rule in `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$93'.
+  Set init value: \n254_q = 3'000
+Found init rule in `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$92'.
+  Set init value: \n253_q = 8'00000000
+Found init rule in `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$91'.
+  Set init value: \n252_q = 8'00000000
+Found init rule in `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$90'.
+  Set init value: \n251_q = 8'00000000
+Found init rule in `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$89'.
+  Set init value: \n250_q = 8'00000000
+Found init rule in `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$88'.
+  Set init value: \n249_q = 8'00000000
+Found init rule in `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$87'.
+  Set init value: \n248_q = 8'00000000
+Found init rule in `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$86'.
+  Set init value: \next_state = 3'000
+Found init rule in `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$85'.
+  Set init value: \current_state = 3'000
+Found init rule in `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$84'.
+  Set init value: \array_reset = 1'0
+Found init rule in `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$83'.
+  Set init value: \array_enable = 1'0
+Found init rule in `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$82'.
+  Set init value: \array_b_col1 = 8'00000000
+Found init rule in `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$81'.
+  Set init value: \array_b_col0 = 8'00000000
+Found init rule in `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$80'.
+  Set init value: \array_a_row1 = 8'00000000
+Found init rule in `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$79'.
+  Set init value: \array_a_row0 = 8'00000000
+Found init rule in `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$78'.
+  Set init value: \x1_reg = 8'00000000
+Found init rule in `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$77'.
+  Set init value: \x0_reg = 8'00000000
+Found init rule in `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$76'.
+  Set init value: \w11_reg = 8'00000000
+Found init rule in `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$75'.
+  Set init value: \w10_reg = 8'00000000
+Found init rule in `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$74'.
+  Set init value: \w01_reg = 8'00000000
+Found init rule in `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$73'.
+  Set init value: \w00_reg = 8'00000000
+
+3.5. Executing PROC_ARST pass (detect async resets in processes).
+
+3.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~12 debug messages>
+
+3.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$150'.
+Creating decoders for process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$149'.
+Creating decoders for process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$148'.
+Creating decoders for process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$147'.
+Creating decoders for process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$146'.
+Creating decoders for process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$145'.
+Creating decoders for process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$144'.
+Creating decoders for process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$143'.
+Creating decoders for process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$142'.
+Creating decoders for process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$141'.
+Creating decoders for process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$140'.
+Creating decoders for process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:913$139'.
+Creating decoders for process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:905$138'.
+     1/1: $1\n71_o[0:0]
+Creating decoders for process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:897$137'.
+     1/1: $1\n67_o[0:0]
+Creating decoders for process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:889$136'.
+     1/1: $1\n63_o[0:0]
+Creating decoders for process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:871$132'.
+     1/1: $1\n51_o[2:0]
+Creating decoders for process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:807$121'.
+Creating decoders for process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:802$120'.
+Creating decoders for process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:797$119'.
+Creating decoders for process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:792$118'.
+Creating decoders for process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:787$117'.
+Creating decoders for process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:782$116'.
+Creating decoders for process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:777$115'.
+Creating decoders for process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:772$114'.
+Creating decoders for process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:767$113'.
+Creating decoders for process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:762$112'.
+Creating decoders for process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$111'.
+Creating decoders for process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$110'.
+Creating decoders for process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$109'.
+Creating decoders for process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$108'.
+Creating decoders for process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:665$107'.
+Creating decoders for process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:660$106'.
+Creating decoders for process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:655$105'.
+Creating decoders for process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:650$104'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$93'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$92'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$91'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$90'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$89'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$88'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$87'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$86'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$85'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$84'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$83'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$82'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$81'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$80'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$79'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$78'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$77'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$76'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$75'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$74'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$73'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:569$72'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:564$71'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:559$70'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:554$69'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:549$68'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:544$67'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:539$66'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:528$65'.
+     1/1: $1\n245_o[0:0]
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:517$64'.
+     1/1: $1\n240_o[0:0]
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:506$63'.
+     1/1: $1\n233_o[7:0]
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:495$62'.
+     1/1: $1\n226_o[7:0]
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:484$61'.
+     1/1: $1\n221_o[7:0]
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:473$60'.
+     1/1: $1\n216_o[7:0]
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:462$59'.
+     1/1: $1\n211_o[0:0]
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:438$52'.
+     1/1: $1\n192_o[2:0]
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:371$29'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:366$28'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:357$27'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:352$26'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:347$25'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:342$24'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:337$23'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:332$22'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:327$21'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:322$20'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:317$19'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:312$18'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:307$17'.
+Creating decoders for process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:302$16'.
+Creating decoders for process `\pe.$proc$synthesis/tiny_nn_2x2_synth.v:84$11'.
+Creating decoders for process `\pe.$proc$synthesis/tiny_nn_2x2_synth.v:81$10'.
+Creating decoders for process `\mac.$proc$synthesis/tiny_nn_2x2_synth.v:35$5'.
+
+3.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\tiny_nn_2x2.\n71_o' from process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:905$138'.
+No latch inferred for signal `\tiny_nn_2x2.\n67_o' from process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:897$137'.
+No latch inferred for signal `\tiny_nn_2x2.\n63_o' from process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:889$136'.
+No latch inferred for signal `\tiny_nn_2x2.\n51_o' from process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:871$132'.
+No latch inferred for signal `\tiny_nn_2x2.\next_state' from process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:807$121'.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\next_state [0]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:807$121`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\next_state [1]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:807$121`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\next_state [2]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:807$121`.
+No latch inferred for signal `\tiny_nn_2x2.\current_state' from process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:802$120'.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\current_state [0]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:802$120`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\current_state [1]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:802$120`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\current_state [2]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:802$120`.
+No latch inferred for signal `\tiny_nn_2x2.\l2_done' from process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:797$119'.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\l2_done` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:797$119`.
+No latch inferred for signal `\tiny_nn_2x2.\l2_start' from process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:792$118'.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\l2_start` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:792$118`.
+No latch inferred for signal `\tiny_nn_2x2.\l1_done' from process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:787$117'.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\l1_done` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:787$117`.
+No latch inferred for signal `\tiny_nn_2x2.\l1_start' from process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:782$116'.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\l1_start` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:782$116`.
+No latch inferred for signal `\tiny_nn_2x2.\hidden_q1' from process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:777$115'.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\hidden_q1 [0]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:777$115`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\hidden_q1 [1]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:777$115`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\hidden_q1 [2]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:777$115`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\hidden_q1 [3]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:777$115`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\hidden_q1 [4]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:777$115`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\hidden_q1 [5]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:777$115`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\hidden_q1 [6]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:777$115`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\hidden_q1 [7]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:777$115`.
+No latch inferred for signal `\tiny_nn_2x2.\hidden_q0' from process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:772$114'.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\hidden_q0 [0]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:772$114`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\hidden_q0 [1]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:772$114`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\hidden_q0 [2]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:772$114`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\hidden_q0 [3]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:772$114`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\hidden_q0 [4]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:772$114`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\hidden_q0 [5]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:772$114`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\hidden_q0 [6]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:772$114`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\hidden_q0 [7]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:772$114`.
+No latch inferred for signal `\tiny_nn_2x2.\l1_out1' from process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:767$113'.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\l1_out1 [0]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:767$113`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\l1_out1 [1]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:767$113`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\l1_out1 [2]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:767$113`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\l1_out1 [3]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:767$113`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\l1_out1 [4]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:767$113`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\l1_out1 [5]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:767$113`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\l1_out1 [6]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:767$113`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\l1_out1 [7]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:767$113`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\l1_out1 [8]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:767$113`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\l1_out1 [9]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:767$113`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\l1_out1 [10]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:767$113`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\l1_out1 [11]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:767$113`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\l1_out1 [12]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:767$113`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\l1_out1 [13]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:767$113`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\l1_out1 [14]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:767$113`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\l1_out1 [15]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:767$113`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\l1_out1 [16]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:767$113`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\l1_out1 [17]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:767$113`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\l1_out1 [18]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:767$113`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\l1_out1 [19]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:767$113`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\l1_out1 [20]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:767$113`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\l1_out1 [21]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:767$113`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\l1_out1 [22]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:767$113`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\l1_out1 [23]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:767$113`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\l1_out1 [24]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:767$113`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\l1_out1 [25]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:767$113`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\l1_out1 [26]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:767$113`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\l1_out1 [27]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:767$113`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\l1_out1 [28]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:767$113`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\l1_out1 [29]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:767$113`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\l1_out1 [30]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:767$113`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\l1_out1 [31]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:767$113`.
+No latch inferred for signal `\tiny_nn_2x2.\l1_out0' from process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:762$112'.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\l1_out0 [0]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:762$112`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\l1_out0 [1]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:762$112`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\l1_out0 [2]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:762$112`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\l1_out0 [3]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:762$112`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\l1_out0 [4]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:762$112`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\l1_out0 [5]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:762$112`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\l1_out0 [6]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:762$112`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\l1_out0 [7]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:762$112`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\l1_out0 [8]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:762$112`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\l1_out0 [9]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:762$112`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\l1_out0 [10]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:762$112`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\l1_out0 [11]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:762$112`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\l1_out0 [12]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:762$112`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\l1_out0 [13]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:762$112`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\l1_out0 [14]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:762$112`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\l1_out0 [15]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:762$112`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\l1_out0 [16]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:762$112`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\l1_out0 [17]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:762$112`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\l1_out0 [18]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:762$112`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\l1_out0 [19]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:762$112`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\l1_out0 [20]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:762$112`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\l1_out0 [21]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:762$112`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\l1_out0 [22]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:762$112`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\l1_out0 [23]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:762$112`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\l1_out0 [24]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:762$112`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\l1_out0 [25]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:762$112`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\l1_out0 [26]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:762$112`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\l1_out0 [27]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:762$112`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\l1_out0 [28]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:762$112`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\l1_out0 [29]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:762$112`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\l1_out0 [30]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:762$112`.
+Removing init bit 1'0 for non-memory siginal `\tiny_nn_2x2.\l1_out0 [31]` in process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:762$112`.
+No latch inferred for signal `\dense_layer_2x2.\bias_result1' from process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:665$107'.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\bias_result1 [0]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:665$107`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\bias_result1 [1]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:665$107`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\bias_result1 [2]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:665$107`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\bias_result1 [3]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:665$107`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\bias_result1 [4]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:665$107`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\bias_result1 [5]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:665$107`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\bias_result1 [6]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:665$107`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\bias_result1 [7]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:665$107`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\bias_result1 [8]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:665$107`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\bias_result1 [9]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:665$107`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\bias_result1 [10]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:665$107`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\bias_result1 [11]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:665$107`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\bias_result1 [12]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:665$107`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\bias_result1 [13]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:665$107`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\bias_result1 [14]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:665$107`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\bias_result1 [15]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:665$107`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\bias_result1 [16]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:665$107`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\bias_result1 [17]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:665$107`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\bias_result1 [18]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:665$107`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\bias_result1 [19]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:665$107`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\bias_result1 [20]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:665$107`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\bias_result1 [21]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:665$107`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\bias_result1 [22]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:665$107`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\bias_result1 [23]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:665$107`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\bias_result1 [24]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:665$107`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\bias_result1 [25]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:665$107`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\bias_result1 [26]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:665$107`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\bias_result1 [27]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:665$107`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\bias_result1 [28]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:665$107`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\bias_result1 [29]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:665$107`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\bias_result1 [30]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:665$107`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\bias_result1 [31]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:665$107`.
+No latch inferred for signal `\dense_layer_2x2.\bias_result0' from process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:660$106'.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\bias_result0 [0]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:660$106`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\bias_result0 [1]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:660$106`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\bias_result0 [2]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:660$106`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\bias_result0 [3]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:660$106`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\bias_result0 [4]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:660$106`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\bias_result0 [5]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:660$106`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\bias_result0 [6]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:660$106`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\bias_result0 [7]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:660$106`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\bias_result0 [8]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:660$106`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\bias_result0 [9]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:660$106`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\bias_result0 [10]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:660$106`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\bias_result0 [11]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:660$106`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\bias_result0 [12]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:660$106`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\bias_result0 [13]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:660$106`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\bias_result0 [14]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:660$106`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\bias_result0 [15]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:660$106`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\bias_result0 [16]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:660$106`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\bias_result0 [17]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:660$106`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\bias_result0 [18]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:660$106`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\bias_result0 [19]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:660$106`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\bias_result0 [20]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:660$106`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\bias_result0 [21]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:660$106`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\bias_result0 [22]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:660$106`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\bias_result0 [23]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:660$106`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\bias_result0 [24]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:660$106`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\bias_result0 [25]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:660$106`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\bias_result0 [26]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:660$106`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\bias_result0 [27]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:660$106`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\bias_result0 [28]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:660$106`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\bias_result0 [29]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:660$106`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\bias_result0 [30]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:660$106`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\bias_result0 [31]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:660$106`.
+No latch inferred for signal `\dense_layer_2x2.\matvec_result1' from process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:655$105'.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\matvec_result1 [0]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:655$105`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\matvec_result1 [1]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:655$105`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\matvec_result1 [2]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:655$105`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\matvec_result1 [3]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:655$105`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\matvec_result1 [4]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:655$105`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\matvec_result1 [5]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:655$105`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\matvec_result1 [6]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:655$105`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\matvec_result1 [7]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:655$105`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\matvec_result1 [8]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:655$105`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\matvec_result1 [9]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:655$105`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\matvec_result1 [10]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:655$105`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\matvec_result1 [11]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:655$105`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\matvec_result1 [12]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:655$105`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\matvec_result1 [13]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:655$105`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\matvec_result1 [14]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:655$105`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\matvec_result1 [15]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:655$105`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\matvec_result1 [16]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:655$105`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\matvec_result1 [17]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:655$105`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\matvec_result1 [18]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:655$105`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\matvec_result1 [19]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:655$105`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\matvec_result1 [20]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:655$105`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\matvec_result1 [21]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:655$105`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\matvec_result1 [22]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:655$105`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\matvec_result1 [23]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:655$105`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\matvec_result1 [24]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:655$105`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\matvec_result1 [25]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:655$105`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\matvec_result1 [26]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:655$105`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\matvec_result1 [27]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:655$105`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\matvec_result1 [28]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:655$105`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\matvec_result1 [29]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:655$105`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\matvec_result1 [30]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:655$105`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\matvec_result1 [31]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:655$105`.
+No latch inferred for signal `\dense_layer_2x2.\matvec_result0' from process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:650$104'.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\matvec_result0 [0]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:650$104`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\matvec_result0 [1]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:650$104`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\matvec_result0 [2]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:650$104`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\matvec_result0 [3]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:650$104`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\matvec_result0 [4]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:650$104`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\matvec_result0 [5]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:650$104`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\matvec_result0 [6]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:650$104`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\matvec_result0 [7]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:650$104`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\matvec_result0 [8]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:650$104`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\matvec_result0 [9]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:650$104`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\matvec_result0 [10]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:650$104`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\matvec_result0 [11]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:650$104`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\matvec_result0 [12]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:650$104`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\matvec_result0 [13]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:650$104`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\matvec_result0 [14]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:650$104`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\matvec_result0 [15]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:650$104`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\matvec_result0 [16]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:650$104`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\matvec_result0 [17]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:650$104`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\matvec_result0 [18]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:650$104`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\matvec_result0 [19]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:650$104`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\matvec_result0 [20]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:650$104`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\matvec_result0 [21]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:650$104`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\matvec_result0 [22]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:650$104`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\matvec_result0 [23]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:650$104`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\matvec_result0 [24]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:650$104`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\matvec_result0 [25]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:650$104`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\matvec_result0 [26]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:650$104`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\matvec_result0 [27]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:650$104`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\matvec_result0 [28]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:650$104`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\matvec_result0 [29]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:650$104`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\matvec_result0 [30]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:650$104`.
+Removing init bit 1'0 for non-memory siginal `\dense_layer_2x2.\matvec_result0 [31]` in process `\dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:650$104`.
+No latch inferred for signal `\matvec_engine_2x2.\n245_o' from process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:528$65'.
+No latch inferred for signal `\matvec_engine_2x2.\n240_o' from process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:517$64'.
+No latch inferred for signal `\matvec_engine_2x2.\n233_o' from process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:506$63'.
+No latch inferred for signal `\matvec_engine_2x2.\n226_o' from process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:495$62'.
+No latch inferred for signal `\matvec_engine_2x2.\n221_o' from process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:484$61'.
+No latch inferred for signal `\matvec_engine_2x2.\n216_o' from process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:473$60'.
+No latch inferred for signal `\matvec_engine_2x2.\n211_o' from process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:462$59'.
+No latch inferred for signal `\matvec_engine_2x2.\n192_o' from process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:438$52'.
+No latch inferred for signal `\matvec_engine_2x2.\next_state' from process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:371$29'.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\next_state [0]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:371$29`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\next_state [1]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:371$29`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\next_state [2]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:371$29`.
+No latch inferred for signal `\matvec_engine_2x2.\current_state' from process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:366$28'.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\current_state [0]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:366$28`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\current_state [1]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:366$28`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\current_state [2]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:366$28`.
+No latch inferred for signal `\matvec_engine_2x2.\array_reset' from process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:357$27'.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\array_reset` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:357$27`.
+No latch inferred for signal `\matvec_engine_2x2.\array_enable' from process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:352$26'.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\array_enable` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:352$26`.
+No latch inferred for signal `\matvec_engine_2x2.\array_b_col1' from process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:347$25'.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\array_b_col1 [0]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:347$25`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\array_b_col1 [1]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:347$25`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\array_b_col1 [2]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:347$25`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\array_b_col1 [3]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:347$25`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\array_b_col1 [4]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:347$25`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\array_b_col1 [5]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:347$25`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\array_b_col1 [6]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:347$25`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\array_b_col1 [7]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:347$25`.
+No latch inferred for signal `\matvec_engine_2x2.\array_b_col0' from process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:342$24'.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\array_b_col0 [0]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:342$24`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\array_b_col0 [1]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:342$24`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\array_b_col0 [2]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:342$24`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\array_b_col0 [3]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:342$24`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\array_b_col0 [4]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:342$24`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\array_b_col0 [5]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:342$24`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\array_b_col0 [6]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:342$24`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\array_b_col0 [7]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:342$24`.
+No latch inferred for signal `\matvec_engine_2x2.\array_a_row1' from process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:337$23'.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\array_a_row1 [0]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:337$23`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\array_a_row1 [1]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:337$23`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\array_a_row1 [2]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:337$23`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\array_a_row1 [3]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:337$23`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\array_a_row1 [4]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:337$23`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\array_a_row1 [5]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:337$23`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\array_a_row1 [6]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:337$23`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\array_a_row1 [7]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:337$23`.
+No latch inferred for signal `\matvec_engine_2x2.\array_a_row0' from process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:332$22'.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\array_a_row0 [0]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:332$22`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\array_a_row0 [1]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:332$22`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\array_a_row0 [2]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:332$22`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\array_a_row0 [3]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:332$22`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\array_a_row0 [4]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:332$22`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\array_a_row0 [5]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:332$22`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\array_a_row0 [6]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:332$22`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\array_a_row0 [7]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:332$22`.
+No latch inferred for signal `\matvec_engine_2x2.\x1_reg' from process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:327$21'.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\x1_reg [0]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:327$21`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\x1_reg [1]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:327$21`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\x1_reg [2]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:327$21`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\x1_reg [3]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:327$21`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\x1_reg [4]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:327$21`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\x1_reg [5]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:327$21`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\x1_reg [6]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:327$21`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\x1_reg [7]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:327$21`.
+No latch inferred for signal `\matvec_engine_2x2.\x0_reg' from process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:322$20'.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\x0_reg [0]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:322$20`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\x0_reg [1]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:322$20`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\x0_reg [2]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:322$20`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\x0_reg [3]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:322$20`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\x0_reg [4]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:322$20`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\x0_reg [5]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:322$20`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\x0_reg [6]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:322$20`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\x0_reg [7]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:322$20`.
+No latch inferred for signal `\matvec_engine_2x2.\w11_reg' from process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:317$19'.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\w11_reg [0]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:317$19`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\w11_reg [1]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:317$19`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\w11_reg [2]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:317$19`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\w11_reg [3]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:317$19`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\w11_reg [4]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:317$19`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\w11_reg [5]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:317$19`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\w11_reg [6]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:317$19`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\w11_reg [7]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:317$19`.
+No latch inferred for signal `\matvec_engine_2x2.\w10_reg' from process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:312$18'.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\w10_reg [0]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:312$18`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\w10_reg [1]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:312$18`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\w10_reg [2]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:312$18`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\w10_reg [3]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:312$18`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\w10_reg [4]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:312$18`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\w10_reg [5]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:312$18`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\w10_reg [6]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:312$18`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\w10_reg [7]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:312$18`.
+No latch inferred for signal `\matvec_engine_2x2.\w01_reg' from process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:307$17'.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\w01_reg [0]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:307$17`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\w01_reg [1]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:307$17`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\w01_reg [2]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:307$17`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\w01_reg [3]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:307$17`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\w01_reg [4]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:307$17`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\w01_reg [5]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:307$17`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\w01_reg [6]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:307$17`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\w01_reg [7]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:307$17`.
+No latch inferred for signal `\matvec_engine_2x2.\w00_reg' from process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:302$16'.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\w00_reg [0]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:302$16`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\w00_reg [1]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:302$16`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\w00_reg [2]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:302$16`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\w00_reg [3]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:302$16`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\w00_reg [4]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:302$16`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\w00_reg [5]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:302$16`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\w00_reg [6]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:302$16`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_2x2.\w00_reg [7]` in process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:302$16`.
+
+3.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\tiny_nn_2x2.\n74_q' using process `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:913$139'.
+  created $dff cell `$procdff$235' with positive edge clock.
+Creating register for signal `\matvec_engine_2x2.\n254_q' using process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:569$72'.
+  created $dff cell `$procdff$236' with positive edge clock.
+Creating register for signal `\matvec_engine_2x2.\n253_q' using process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:564$71'.
+  created $dff cell `$procdff$237' with positive edge clock.
+Creating register for signal `\matvec_engine_2x2.\n252_q' using process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:559$70'.
+  created $dff cell `$procdff$238' with positive edge clock.
+Creating register for signal `\matvec_engine_2x2.\n251_q' using process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:554$69'.
+  created $dff cell `$procdff$239' with positive edge clock.
+Creating register for signal `\matvec_engine_2x2.\n250_q' using process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:549$68'.
+  created $dff cell `$procdff$240' with positive edge clock.
+Creating register for signal `\matvec_engine_2x2.\n249_q' using process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:544$67'.
+  created $dff cell `$procdff$241' with positive edge clock.
+Creating register for signal `\matvec_engine_2x2.\n248_q' using process `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:539$66'.
+  created $dff cell `$procdff$242' with positive edge clock.
+Creating register for signal `\pe.\n304_q' using process `\pe.$proc$synthesis/tiny_nn_2x2_synth.v:84$11'.
+  created $dff cell `$procdff$243' with positive edge clock.
+Creating register for signal `\pe.\n303_q' using process `\pe.$proc$synthesis/tiny_nn_2x2_synth.v:81$10'.
+  created $dff cell `$procdff$244' with positive edge clock.
+Creating register for signal `\mac.\n319_q' using process `\mac.$proc$synthesis/tiny_nn_2x2_synth.v:35$5'.
+  created $dff cell `$procdff$245' with positive edge clock.
+
+3.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+3.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Removing empty process `tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$150'.
+Removing empty process `tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$149'.
+Removing empty process `tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$148'.
+Removing empty process `tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$147'.
+Removing empty process `tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$146'.
+Removing empty process `tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$145'.
+Removing empty process `tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$144'.
+Removing empty process `tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$143'.
+Removing empty process `tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$142'.
+Removing empty process `tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$141'.
+Removing empty process `tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$140'.
+Removing empty process `tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:913$139'.
+Found and cleaned up 1 empty switch in `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:905$138'.
+Removing empty process `tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:905$138'.
+Found and cleaned up 1 empty switch in `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:897$137'.
+Removing empty process `tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:897$137'.
+Found and cleaned up 1 empty switch in `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:889$136'.
+Removing empty process `tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:889$136'.
+Found and cleaned up 1 empty switch in `\tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:871$132'.
+Removing empty process `tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:871$132'.
+Removing empty process `tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:807$121'.
+Removing empty process `tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:802$120'.
+Removing empty process `tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:797$119'.
+Removing empty process `tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:792$118'.
+Removing empty process `tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:787$117'.
+Removing empty process `tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:782$116'.
+Removing empty process `tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:777$115'.
+Removing empty process `tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:772$114'.
+Removing empty process `tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:767$113'.
+Removing empty process `tiny_nn_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:762$112'.
+Removing empty process `dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$111'.
+Removing empty process `dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$110'.
+Removing empty process `dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$109'.
+Removing empty process `dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$108'.
+Removing empty process `dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:665$107'.
+Removing empty process `dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:660$106'.
+Removing empty process `dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:655$105'.
+Removing empty process `dense_layer_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:650$104'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$93'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$92'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$91'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$90'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$89'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$88'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$87'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$86'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$85'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$84'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$83'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$82'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$81'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$80'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$79'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$78'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$77'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$76'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$75'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$74'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:0$73'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:569$72'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:564$71'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:559$70'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:554$69'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:549$68'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:544$67'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:539$66'.
+Found and cleaned up 1 empty switch in `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:528$65'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:528$65'.
+Found and cleaned up 1 empty switch in `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:517$64'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:517$64'.
+Found and cleaned up 1 empty switch in `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:506$63'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:506$63'.
+Found and cleaned up 1 empty switch in `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:495$62'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:495$62'.
+Found and cleaned up 1 empty switch in `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:484$61'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:484$61'.
+Found and cleaned up 1 empty switch in `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:473$60'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:473$60'.
+Found and cleaned up 1 empty switch in `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:462$59'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:462$59'.
+Found and cleaned up 1 empty switch in `\matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:438$52'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:438$52'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:371$29'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:366$28'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:357$27'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:352$26'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:347$25'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:342$24'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:337$23'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:332$22'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:327$21'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:322$20'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:317$19'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:312$18'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:307$17'.
+Removing empty process `matvec_engine_2x2.$proc$synthesis/tiny_nn_2x2_synth.v:302$16'.
+Removing empty process `pe.$proc$synthesis/tiny_nn_2x2_synth.v:84$11'.
+Removing empty process `pe.$proc$synthesis/tiny_nn_2x2_synth.v:81$10'.
+Removing empty process `mac.$proc$synthesis/tiny_nn_2x2_synth.v:35$5'.
+Cleaned up 12 empty switches.
+
+3.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module tiny_nn_2x2.
+<suppressed ~1 debug messages>
+Optimizing module dense_layer_2x2.
+Optimizing module requantize_2.
+<suppressed ~2 debug messages>
+Optimizing module matvec_engine_2x2.
+<suppressed ~3 debug messages>
+Optimizing module bias_add_2.
+Optimizing module relu_2.
+Optimizing module pe_array_2x2.
+Optimizing module pe.
+Optimizing module mac.
+
+4. Executing OPT pass (performing simple optimizations).
+
+4.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module tiny_nn_2x2.
+Optimizing module dense_layer_2x2.
+Optimizing module requantize_2.
+Optimizing module matvec_engine_2x2.
+Optimizing module bias_add_2.
+Optimizing module relu_2.
+Optimizing module pe_array_2x2.
+Optimizing module pe.
+Optimizing module mac.
+
+4.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\tiny_nn_2x2'.
+<suppressed ~9 debug messages>
+Finding identical cells in module `\dense_layer_2x2'.
+Finding identical cells in module `\requantize_2'.
+Finding identical cells in module `\matvec_engine_2x2'.
+<suppressed ~147 debug messages>
+Finding identical cells in module `\bias_add_2'.
+Finding identical cells in module `\relu_2'.
+Finding identical cells in module `\pe_array_2x2'.
+Finding identical cells in module `\pe'.
+Finding identical cells in module `\mac'.
+Removed a total of 52 cells.
+
+4.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \tiny_nn_2x2..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \dense_layer_2x2..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \requantize_2..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \matvec_engine_2x2..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \bias_add_2..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \relu_2..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+      Replacing known input bits on port A of cell $ternary$synthesis/tiny_nn_2x2_synth.v:196$13: \data1 -> { 1'0 \data1 [30:0] }
+      Replacing known input bits on port A of cell $ternary$synthesis/tiny_nn_2x2_synth.v:192$12: \data0 -> { 1'0 \data0 [30:0] }
+  Analyzing evaluation results.
+Running muxtree optimizer on module \pe_array_2x2..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \pe..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \mac..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~25 debug messages>
+
+4.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \tiny_nn_2x2.
+  Optimizing cells in module \dense_layer_2x2.
+  Optimizing cells in module \requantize_2.
+  Optimizing cells in module \matvec_engine_2x2.
+    New ctrl vector for $pmux cell $procmux$212: { $procmux$232_CMP $procmux$231_CMP $auto$opt_reduce.cc:134:opt_pmux$247 }
+    New ctrl vector for $pmux cell $procmux$180: { $auto$opt_reduce.cc:134:opt_pmux$251 $auto$opt_reduce.cc:134:opt_pmux$249 }
+    New ctrl vector for $pmux cell $procmux$204: { $procmux$233_CMP $procmux$232_CMP $auto$opt_reduce.cc:134:opt_pmux$253 }
+    New ctrl vector for $pmux cell $procmux$172: { $procmux$230_CMP $auto$opt_reduce.cc:134:opt_pmux$255 }
+    New ctrl vector for $pmux cell $procmux$220: { $procmux$234_CMP $auto$opt_reduce.cc:134:opt_pmux$257 }
+    New ctrl vector for $pmux cell $procmux$196: { $procmux$232_CMP $procmux$231_CMP $auto$opt_reduce.cc:134:opt_pmux$259 }
+    New ctrl vector for $pmux cell $procmux$188: $auto$opt_reduce.cc:134:opt_pmux$261
+  Optimizing cells in module \matvec_engine_2x2.
+  Optimizing cells in module \bias_add_2.
+  Optimizing cells in module \relu_2.
+  Optimizing cells in module \pe_array_2x2.
+  Optimizing cells in module \pe.
+  Optimizing cells in module \mac.
+Performed a total of 7 changes.
+
+4.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\tiny_nn_2x2'.
+Finding identical cells in module `\dense_layer_2x2'.
+Finding identical cells in module `\requantize_2'.
+Finding identical cells in module `\matvec_engine_2x2'.
+<suppressed ~3 debug messages>
+Finding identical cells in module `\bias_add_2'.
+Finding identical cells in module `\relu_2'.
+Finding identical cells in module `\pe_array_2x2'.
+Finding identical cells in module `\pe'.
+Finding identical cells in module `\mac'.
+Removed a total of 1 cells.
+
+4.6. Executing OPT_DFF pass (perform DFF optimizations).
+Adding SRST signal on $procdff$235 ($dff) from module tiny_nn_2x2 (D = \next_state, Q = \n74_q, rval = 3'000).
+Adding SRST signal on $procdff$240 ($dff) from module matvec_engine_2x2 (D = \n144_o, Q = \n250_q, rval = 8'00000000).
+Adding SRST signal on $procdff$241 ($dff) from module matvec_engine_2x2 (D = \n143_o, Q = \n249_q, rval = 8'00000000).
+Adding SRST signal on $procdff$242 ($dff) from module matvec_engine_2x2 (D = \n142_o, Q = \n248_q, rval = 8'00000000).
+Adding SRST signal on $procdff$236 ($dff) from module matvec_engine_2x2 (D = \next_state, Q = \n254_q, rval = 3'000).
+Adding SRST signal on $procdff$237 ($dff) from module matvec_engine_2x2 (D = \n147_o, Q = \n253_q, rval = 8'00000000).
+Adding SRST signal on $procdff$238 ($dff) from module matvec_engine_2x2 (D = \n146_o, Q = \n252_q, rval = 8'00000000).
+Adding SRST signal on $procdff$239 ($dff) from module matvec_engine_2x2 (D = \n145_o, Q = \n251_q, rval = 8'00000000).
+Adding SRST signal on $procdff$243 ($dff) from module pe (D = \n294_o, Q = \n304_q, rval = 8'00000000).
+Adding SRST signal on $procdff$244 ($dff) from module pe (D = \n293_o, Q = \n303_q, rval = 8'00000000).
+Adding SRST signal on $procdff$245 ($dff) from module mac (D = \n314_o, Q = \n319_q, rval = 0).
+
+4.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \tiny_nn_2x2..
+Finding unused cells or wires in module \dense_layer_2x2..
+Finding unused cells or wires in module \requantize_2..
+Finding unused cells or wires in module \matvec_engine_2x2..
+Finding unused cells or wires in module \bias_add_2..
+Finding unused cells or wires in module \relu_2..
+Finding unused cells or wires in module \pe_array_2x2..
+Finding unused cells or wires in module \pe..
+Finding unused cells or wires in module \mac..
+Removed 11 unused cells and 234 unused wires.
+<suppressed ~36 debug messages>
+
+4.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module bias_add_2.
+Optimizing module dense_layer_2x2.
+Optimizing module mac.
+Optimizing module matvec_engine_2x2.
+Optimizing module pe.
+Optimizing module pe_array_2x2.
+Optimizing module relu_2.
+Optimizing module requantize_2.
+Optimizing module tiny_nn_2x2.
+
+4.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+4.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \bias_add_2..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \dense_layer_2x2..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \mac..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \matvec_engine_2x2..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \pe..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \pe_array_2x2..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \relu_2..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \requantize_2..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \tiny_nn_2x2..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~25 debug messages>
+
+4.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \bias_add_2.
+  Optimizing cells in module \dense_layer_2x2.
+  Optimizing cells in module \mac.
+  Optimizing cells in module \matvec_engine_2x2.
+  Optimizing cells in module \pe.
+  Optimizing cells in module \pe_array_2x2.
+  Optimizing cells in module \relu_2.
+  Optimizing cells in module \requantize_2.
+  Optimizing cells in module \tiny_nn_2x2.
+Performed a total of 0 changes.
+
+4.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\bias_add_2'.
+Finding identical cells in module `\dense_layer_2x2'.
+Finding identical cells in module `\mac'.
+Finding identical cells in module `\matvec_engine_2x2'.
+Finding identical cells in module `\pe'.
+Finding identical cells in module `\pe_array_2x2'.
+Finding identical cells in module `\relu_2'.
+Finding identical cells in module `\requantize_2'.
+Finding identical cells in module `\tiny_nn_2x2'.
+Removed a total of 0 cells.
+
+4.13. Executing OPT_DFF pass (perform DFF optimizations).
+Adding EN signal on $auto$ff.cc:266:slice$272 ($sdff) from module mac (D = \n313_o, Q = \n319_q).
+Adding EN signal on $auto$ff.cc:266:slice$269 ($sdff) from module matvec_engine_2x2 (D = \w11, Q = \n251_q).
+Adding EN signal on $auto$ff.cc:266:slice$268 ($sdff) from module matvec_engine_2x2 (D = \x0, Q = \n252_q).
+Adding EN signal on $auto$ff.cc:266:slice$267 ($sdff) from module matvec_engine_2x2 (D = \x1, Q = \n253_q).
+Adding EN signal on $auto$ff.cc:266:slice$266 ($sdff) from module matvec_engine_2x2 (D = \next_state, Q = \n254_q).
+Adding EN signal on $auto$ff.cc:266:slice$265 ($sdff) from module matvec_engine_2x2 (D = \w00, Q = \n248_q).
+Adding EN signal on $auto$ff.cc:266:slice$264 ($sdff) from module matvec_engine_2x2 (D = \w01, Q = \n249_q).
+Adding EN signal on $auto$ff.cc:266:slice$263 ($sdff) from module matvec_engine_2x2 (D = \w10, Q = \n250_q).
+Adding EN signal on $auto$ff.cc:266:slice$271 ($sdff) from module pe (D = \a_in, Q = \n303_q).
+Adding EN signal on $auto$ff.cc:266:slice$270 ($sdff) from module pe (D = \b_in, Q = \n304_q).
+Adding EN signal on $auto$ff.cc:266:slice$262 ($sdff) from module tiny_nn_2x2 (D = \next_state, Q = \n74_q).
+
+4.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \bias_add_2..
+Finding unused cells or wires in module \dense_layer_2x2..
+Finding unused cells or wires in module \mac..
+Finding unused cells or wires in module \matvec_engine_2x2..
+Finding unused cells or wires in module \pe..
+Finding unused cells or wires in module \pe_array_2x2..
+Finding unused cells or wires in module \relu_2..
+Finding unused cells or wires in module \requantize_2..
+Finding unused cells or wires in module \tiny_nn_2x2..
+Removed 9 unused cells and 9 unused wires.
+<suppressed ~18 debug messages>
+
+4.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module bias_add_2.
+Optimizing module dense_layer_2x2.
+Optimizing module mac.
+Optimizing module matvec_engine_2x2.
+Optimizing module pe.
+Optimizing module pe_array_2x2.
+Optimizing module relu_2.
+Optimizing module requantize_2.
+Optimizing module tiny_nn_2x2.
+
+4.16. Rerunning OPT passes. (Maybe there is more to do..)
+
+4.17. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \bias_add_2..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \dense_layer_2x2..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \mac..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \matvec_engine_2x2..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \pe..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \pe_array_2x2..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \relu_2..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \requantize_2..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \tiny_nn_2x2..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~16 debug messages>
+
+4.18. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \bias_add_2.
+  Optimizing cells in module \dense_layer_2x2.
+  Optimizing cells in module \mac.
+  Optimizing cells in module \matvec_engine_2x2.
+  Optimizing cells in module \pe.
+  Optimizing cells in module \pe_array_2x2.
+  Optimizing cells in module \relu_2.
+  Optimizing cells in module \requantize_2.
+  Optimizing cells in module \tiny_nn_2x2.
+Performed a total of 0 changes.
+
+4.19. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\bias_add_2'.
+Finding identical cells in module `\dense_layer_2x2'.
+Finding identical cells in module `\mac'.
+Finding identical cells in module `\matvec_engine_2x2'.
+Finding identical cells in module `\pe'.
+Finding identical cells in module `\pe_array_2x2'.
+Finding identical cells in module `\relu_2'.
+Finding identical cells in module `\requantize_2'.
+Finding identical cells in module `\tiny_nn_2x2'.
+Removed a total of 0 cells.
+
+4.20. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.21. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \bias_add_2..
+Finding unused cells or wires in module \dense_layer_2x2..
+Finding unused cells or wires in module \mac..
+Finding unused cells or wires in module \matvec_engine_2x2..
+Finding unused cells or wires in module \pe..
+Finding unused cells or wires in module \pe_array_2x2..
+Finding unused cells or wires in module \relu_2..
+Finding unused cells or wires in module \requantize_2..
+Finding unused cells or wires in module \tiny_nn_2x2..
+
+4.22. Executing OPT_EXPR pass (perform const folding).
+Optimizing module bias_add_2.
+Optimizing module dense_layer_2x2.
+Optimizing module mac.
+Optimizing module matvec_engine_2x2.
+Optimizing module pe.
+Optimizing module pe_array_2x2.
+Optimizing module relu_2.
+Optimizing module requantize_2.
+Optimizing module tiny_nn_2x2.
+
+4.23. Finished OPT passes. (There is nothing left to do.)
+
+5. Printing statistics.
+
+=== bias_add_2 ===
+
+   Number of wires:                  8
+   Number of wire bits:            256
+   Number of public wires:           8
+   Number of public wire bits:     256
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                  2
+     $add                            2
+
+=== dense_layer_2x2 ===
+
+   Number of wires:                 25
+   Number of wire bits:            501
+   Number of public wires:          25
+   Number of public wire bits:     501
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                  3
+     bias_add_2                      1
+     matvec_engine_2x2               1
+     relu_2                          1
+
+=== mac ===
+
+   Number of wires:                 13
+   Number of wire bits:            227
+   Number of public wires:          13
+   Number of public wire bits:     227
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                  3
+     $add                            1
+     $mul                            1
+     $sdffe                          1
+
+=== matvec_engine_2x2 ===
+
+   Number of wires:                 76
+   Number of wire bits:            464
+   Number of public wires:          62
+   Number of public wire bits:     450
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                 38
+     $and                            1
+     $eq                            11
+     $logic_not                      1
+     $mux                            2
+     $ne                             1
+     $pmux                           7
+     $reduce_or                      7
+     $sdffe                          7
+     pe_array_2x2                    1
+
+=== pe ===
+
+   Number of wires:                 13
+   Number of wire bits:            131
+   Number of public wires:          13
+   Number of public wire bits:     131
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                  3
+     $sdffe                          2
+     mac                             1
+
+=== pe_array_2x2 ===
+
+   Number of wires:                 31
+   Number of wire bits:            419
+   Number of public wires:          31
+   Number of public wire bits:     419
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                  4
+     pe                              4
+
+=== relu_2 ===
+
+   Number of wires:                  8
+   Number of wire bits:            194
+   Number of public wires:           8
+   Number of public wire bits:     194
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                  2
+     $mux                            2
+
+=== requantize_2 ===
+
+   Number of wires:                 16
+   Number of wire bits:            196
+   Number of public wires:          16
+   Number of public wire bits:     196
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                  8
+     $gt                             2
+     $lt                             2
+     $mux                            4
+
+=== tiny_nn_2x2 ===
+
+   Number of wires:                 68
+   Number of wire bits:            559
+   Number of public wires:          55
+   Number of public wire bits:     546
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                 30
+     $eq                            14
+     $logic_not                      1
+     $mux                            6
+     $ne                             3
+     $pmux                           1
+     $reduce_and                     1
+     $sdffe                          1
+     dense_layer_2x2                 2
+     requantize_2                    1
+
+=== design hierarchy ===
+
+   tiny_nn_2x2                       1
+     dense_layer_2x2                 2
+       bias_add_2                    1
+       matvec_engine_2x2             1
+         pe_array_2x2                1
+           pe                        4
+             mac                     1
+       relu_2                        1
+     requantize_2                    1
+
+   Number of wires:                588
+   Number of wire bits:           7287
+   Number of public wires:         547
+   Number of public wire bits:    7246
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                157
+     $add                           12
+     $and                            2
+     $eq                            36
+     $gt                             2
+     $logic_not                      3
+     $lt                             2
+     $mul                            8
+     $mux                           18
+     $ne                             5
+     $pmux                          15
+     $reduce_and                     1
+     $reduce_or                     14
+     $sdffe                         39
+
+End of script. Logfile hash: 458df9a425, CPU: user 0.13s system 0.01s, MEM: 12.38 MB peak
+Yosys 0.33 (git sha1 2584903a060)
+Time spent: 22% 5x opt_expr (0 sec), 18% 3x opt_clean (0 sec), ...
