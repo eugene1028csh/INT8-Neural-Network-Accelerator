@@ -28,7 +28,11 @@ begin
 
     wait for 1 ns;
 
-    assert out0 = to_signed(100, 8)
+    assert out0 = to_signed(3, 8)
+    report "out0 incorrect"
+      severity error;
+
+    assert out1 = to_signed(6, 8)
     report "out0 incorrect"
       severity error;
 
@@ -43,6 +47,7 @@ begin
     assert out1 = to_signed(63, 8)
     report "Test 1 out1 failed"
       severity error;
+
     data0 <= to_signed(16129, 32);
     data1 <= to_signed(20141, 32);
     wait for 10 ns;
@@ -69,7 +74,6 @@ begin
     report "Requantizer trained-network tests passed"
       severity note;
 
-    wait;
     wait;
   end process;
 end architecture;

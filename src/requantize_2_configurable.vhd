@@ -16,8 +16,8 @@ begin
   process (all)
     variable product0 : signed(47 downto 0);
     variable product1 : signed(47 downto 0);
-    variable scaled0  : signed(31 downto 0);
-    variable scaled1  : signed(31 downto 0);
+    variable scaled0  : signed(47 downto 0);
+    variable scaled1  : signed(47 downto 0);
     variable round_offset : signed(47 downto 0);
     variable shift_int : integer;
     --shift_int is exactly the integer representation of how many bit positions we want to shift:
@@ -38,16 +38,16 @@ begin
     --scaled =     (product + round_offset)     >> shift_in  
     --shifting changes the numerical value; resizing changes the bit-width.
 
-    if scaled0 > to_signed(127, 32) then
+    if scaled0 > to_signed(127, 48) then
       out0 <= to_signed(127, 8);
-    elsif scaled0 < to_signed(-128, 32) then
+    elsif scaled0 < to_signed(-128, 48) then
       out0 <= to_signed(-128, 8);
     else
       out0 <= resize(scaled0, 8);
     end if;
-    if scaled1 > to_signed(127, 32) then
+    if scaled1 > to_signed(127, 48) then
       out1 <= to_signed(127, 8);
-    elsif scaled1 < to_signed(-128, 32) then
+    elsif scaled1 < to_signed(-128, 48) then
       out1 <= to_signed(-128, 8);
     else
       out1 <= resize(scaled1, 8);
