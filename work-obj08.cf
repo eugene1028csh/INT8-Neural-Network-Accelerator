@@ -1,4 +1,7 @@
 v 4
+file . "tb/matvec_engine_4x4_tb.vhd" "06a7cb854b4ced28c0ee3b684881d45d26536505" "20260907073718.887":
+  entity matvec_engine_4x4_tb at 1( 0) + 0 on 381;
+  architecture sim of matvec_engine_4x4_tb at 8( 114) + 0 on 382;
 file . "src/matmul_engine_4x4.vhd" "5ffe22cf25f3d23041543e7a0acc97b7df3b34e3" "20260907071606.449":
   entity matmul_engine_4x4 at 1( 0) + 0 on 361;
   architecture rtl of matmul_engine_4x4 at 33( 864) + 0 on 362;
@@ -44,15 +47,15 @@ file . "src/pe_chain_2.vhd" "3d7bfd9ad03ce6c48dbb1ff91008d9b5a0604151" "20260812
 file . "tb/pe_tb.vhd" "5f6a6cf6c65bd27a8905b74caf388eff31d1affb" "20260811082253.889":
   entity pe_tb at 1( 0) + 0 on 41;
   architecture sim of pe_tb at 8( 105) + 0 on 42;
-file . "src/mac.vhd" "81986a71f36343292e890b6fabbb552e372b5bad" "20260907071606.447":
-  entity mac at 1( 0) + 0 on 355;
-  architecture rtl of mac at 18( 295) + 0 on 356;
+file . "src/mac.vhd" "81986a71f36343292e890b6fabbb552e372b5bad" "20260907073718.883":
+  entity mac at 1( 0) + 0 on 373;
+  architecture rtl of mac at 18( 295) + 0 on 374;
 file . "tb/mac_tb.vhd" "01815c328c352c08a8c49eac02f8914b18c0f400" "20260811072322.538":
   entity mac_tb at 1( 0) + 0 on 25;
   architecture sim of mac_tb at 8( 107) + 0 on 26;
-file . "src/pe.vhd" "70908cdfad7ba7ba6a6ea31bf1d865e0a6b851f5" "20260907071606.447":
-  entity pe at 1( 0) + 0 on 357;
-  architecture rtl of pe at 21( 370) + 0 on 358;
+file . "src/pe.vhd" "70908cdfad7ba7ba6a6ea31bf1d865e0a6b851f5" "20260907073718.884":
+  entity pe at 1( 0) + 0 on 375;
+  architecture rtl of pe at 21( 370) + 0 on 376;
 file . "src/matmul_engine_2x2.vhd" "3a99a786fefd229ce14e3d474334dce0174bfa5f" "20260903061005.488":
   entity matmul_engine_2x2 at 1( 0) + 0 on 125;
   architecture rtl of matmul_engine_2x2 at 33( 699) + 0 on 126;
@@ -77,9 +80,12 @@ file . "src/tiny_nn_2x2.vhd" "955e2e47240a5fa31d6c21b2d721d67fb839ab52" "2026090
 file . "tb/tiny_nn_2x2_tb.vhd" "4f2e8e0a5f76b0b530e0b6564abc1a2f74122e44" "20260904073908.311":
   entity tiny_nn_2x2_tb at 1( 0) + 0 on 309;
   architecture tb of tiny_nn_2x2_tb at 8( 108) + 0 on 310;
-file . "src/pe_array_4x4.vhd" "1ab15cdd1afba0fe7e7dfd21ab7b4e1b70dc8edd" "20260907071606.448":
-  entity pe_array_4x4 at 1( 0) + 0 on 359;
-  architecture rtl of pe_array_4x4 at 51( 1486) + 0 on 360;
+file . "src/pe_array_4x4.vhd" "1ab15cdd1afba0fe7e7dfd21ab7b4e1b70dc8edd" "20260907073718.885":
+  entity pe_array_4x4 at 1( 0) + 0 on 377;
+  architecture rtl of pe_array_4x4 at 51( 1486) + 0 on 378;
 file . "tb/matmul_engine_4x4_tb.vhd" "60b1b60c5702851fb5a8627a50a17e699679d4e7" "20260907071606.450":
   entity matmul_engine_4x4_tb at 1( 0) + 0 on 363;
   architecture sim of matmul_engine_4x4_tb at 8( 114) + 0 on 364;
+file . "src/matvec_engine_4x4.vhd" "1db7559366431fed9a164f24b1a9f545f41dd6a0" "20260907073718.886":
+  entity matvec_engine_4x4 at 1( 0) + 0 on 379;
+  architecture rtl of matvec_engine_4x4 at 24( 514) + 0 on 380;
