@@ -1,3 +1,14 @@
+#scale values from Python
+#        ↓
+#r = Sx × Sw / Snext
+#        ↓
+#r ≈ 0.00632
+#        ↓ × 2^16
+#414
+#        ↓
+#hardware uses:
+#(data × 414) >> 163
+
 import numpy as np
 
 
