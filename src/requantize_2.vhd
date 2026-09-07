@@ -19,6 +19,10 @@ begin
   begin
     --Fixed point approx and add half of 2^16 for rounding
     --frequant multiplier 414/2^16
+    --integer multiplier≈fractional scale ratio×216
+    
+    --Weight quantization: int_weight + weight_scale → represents a real weight  
+    --Requantization: integer_multiplier + fixed shift → represents a fractional scale ratio
     product0 := data0 * to_signed(414, 16) + to_signed(32768, 48);
     product1 := data1 * to_signed(414, 16) + to_signed(32768, 48);
 

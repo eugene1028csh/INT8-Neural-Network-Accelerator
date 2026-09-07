@@ -60,13 +60,17 @@ begin
   process
   begin
     -- Trained quantized parameters=
-    w1_00 <= to_signed(127, 8);
-    w1_01 <= to_signed(-127, 8);
-    w1_10 <= to_signed(80, 8);
-    w1_11 <= to_signed(-79, 8);
+    --Layer 1:transform the inputs into useful nonlinear features
+    w1_00 <= to_signed(127, 8); --weight is near the largest positive magnitude representable under that quantization scale.
+    w1_01 <= to_signed(-127, 8); --strong negative weight
+    w1_10 <= to_signed(80, 8); --moderately strong positive weight
+    w1_11 <= to_signed(-79, 8); --moderately strong negative weight
     b1_0 <= to_signed(0, 32);
-    b1_1 <= to_signed(9981, 32);
+    b1_1 <= to_signed(9981, 32); --may correspond to a perfectly ordinary real-valued bias.
+    --Biases are INT32 because they're added to the INT32 MAC result.
+    --ReLU  ← introduces nonlinearity
 
+    --Layer 2: use those features to decide the class
     w2_00 <= to_signed(-116, 8);
     w2_01 <= to_signed(100, 8);
     w2_10 <= to_signed(127, 8);
