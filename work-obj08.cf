@@ -1,73 +1,79 @@
 v 4
-file . "tb/requantize_2_configurable_tb.vhd" "59724ffd1499f16e09e2d7d2d42b75706b423778" "20260907034451.002":
-  entity requantize_2_configurable_tb at 1( 0) + 0 on 313;
-  architecture sim of requantize_2_configurable_tb at 8( 122) + 0 on 314;
-file . "src/requantize_2_configurable.vhd" "b0dad9c631491a8439729e52ccf60771ca6648fc" "20260907034451.002":
-  entity requantize_2_configurable at 1( 0) + 0 on 311;
-  architecture rtl of requantize_2_configurable at 14( 380) + 0 on 312;
-file . "tb/requantize_2_tb.vhd" "bae3c6b9c8433bcbb33206f2e1b45bef743745af" "20260904021051.564":
-  entity requantize_2_tb at 1( 0) + 0 on 189;
-  architecture sim of requantize_2_tb at 8( 109) + 0 on 190;
-file . "src/requantize_2.vhd" "ab7c303e81b20e943da8d2d4d1e93f8c5e2bf223" "20260904073908.309":
-  entity requantize_2 at 1( 0) + 0 on 305;
-  architecture rtl of requantize_2 at 12( 205) + 0 on 306;
-file . "tb/relu_2_tb.vhd" "88c0468ffbe7aa8d0863452db80eb94a670f38b4" "20260903161449.433":
-  entity relu_2_tb at 1( 0) + 0 on 169;
-  architecture sim of relu_2_tb at 8( 110) + 0 on 170;
-file . "src/relu_2.vhd" "0582b0365bd86379520c76ebb961acd0049a92c8" "20260904073908.307":
-  entity relu_2 at 1( 0) + 0 on 301;
-  architecture rtl of relu_2 at 12( 207) + 0 on 302;
-file . "tb/matvec_engine_2x2_tb.vhd" "4fd62ddbef27b8a63d4a8b423f096d9d5e767291" "20260903083218.329":
-  entity matvec_engine_2x2_tb at 1( 0) + 0 on 161;
-  architecture sim of matvec_engine_2x2_tb at 8( 114) + 0 on 162;
-file . "tb/matmul_engine_2x2_tb.vhd" "9fa48195fdfbcf71678d299dac31a97316d9e560" "20260903061005.490":
-  entity matmul_engine_2x2_tb at 1( 0) + 0 on 127;
-  architecture sim of matmul_engine_2x2_tb at 8( 114) + 0 on 128;
-file . "tb/pe_array_2x2_tb.vhd" "93cb5049fc9001138e6ef209ba52b6ac307cf4e5" "20260812071543.343":
-  entity pe_array_2x2_tb at 1( 0) + 0 on 83;
-  architecture sim of pe_array_2x2_tb at 8( 125) + 0 on 84;
-file . "src/pe_array_2x2.vhd" "dd54450de35ce63730e358d6c826a4f8c6992b24" "20260904073908.301":
-  entity pe_array_2x2 at 1( 0) + 0 on 295;
-  architecture rtl of pe_array_2x2 at 27( 759) + 0 on 296;
-file . "tb/pe_chain_2_tb.vhd" "6a48ad132b12468ae29af8bf581207d7def25e59" "20260812023214.660":
-  entity pe_chain_2_tb at 1( 0) + 0 on 63;
-  architecture sim of pe_chain_2_tb at 8( 121) + 0 on 64;
-file . "src/pe_chain_2.vhd" "3d7bfd9ad03ce6c48dbb1ff91008d9b5a0604151" "20260812030335.764":
-  entity pe_chain_2 at 1( 0) + 0 on 69;
-  architecture rtl of pe_chain_2 at 19( 432) + 0 on 70;
-file . "tb/pe_tb.vhd" "5f6a6cf6c65bd27a8905b74caf388eff31d1affb" "20260811082253.889":
-  entity pe_tb at 1( 0) + 0 on 41;
-  architecture sim of pe_tb at 8( 105) + 0 on 42;
-file . "src/mac.vhd" "81986a71f36343292e890b6fabbb552e372b5bad" "20260904073908.299":
-  entity mac at 1( 0) + 0 on 291;
-  architecture rtl of mac at 18( 295) + 0 on 292;
-file . "tb/mac_tb.vhd" "01815c328c352c08a8c49eac02f8914b18c0f400" "20260811072322.538":
-  entity mac_tb at 1( 0) + 0 on 25;
-  architecture sim of mac_tb at 8( 107) + 0 on 26;
-file . "src/pe.vhd" "70908cdfad7ba7ba6a6ea31bf1d865e0a6b851f5" "20260904073908.300":
-  entity pe at 1( 0) + 0 on 293;
-  architecture rtl of pe at 21( 370) + 0 on 294;
-file . "src/matmul_engine_2x2.vhd" "3a99a786fefd229ce14e3d474334dce0174bfa5f" "20260903061005.488":
-  entity matmul_engine_2x2 at 1( 0) + 0 on 125;
-  architecture rtl of matmul_engine_2x2 at 33( 699) + 0 on 126;
-file . "src/matvec_engine_2x2.vhd" "d687ccfeedbbd6726861348aeaaac1f19fd205cb" "20260904073908.305":
-  entity matvec_engine_2x2 at 1( 0) + 0 on 297;
-  architecture rtl of matvec_engine_2x2 at 31( 581) + 0 on 298;
-file . "src/bias_add_2.vhd" "63a2caf64b66158fbc067b972d187965120591f6" "20260904073908.306":
-  entity bias_add_2 at 1( 0) + 0 on 299;
-  architecture rtl of bias_add_2 at 18( 346) + 0 on 300;
-file . "tb/bias_add_2_tb.vhd" "1f0be6ec6e7c67f3affcd272b360c181672d8573" "20260903155530.991":
-  entity bias_add_2_tb at 1( 0) + 0 on 165;
-  architecture sim of bias_add_2_tb at 8( 114) + 0 on 166;
-file . "src/dense_layer_2x2.vhd" "f9ce55b7c8906272a2daf97803eb55c87e6cb2b4" "20260904073908.308":
-  entity dense_layer_2x2 at 1( 0) + 0 on 303;
-  architecture rtl of dense_layer_2x2 at 25( 425) + 0 on 304;
-file . "tb/dense_layer_2x2_tb.vhd" "4ceba79d837a08a1aca9ff7b25b927b589982ae0" "20260903165313.301":
-  entity dense_layer_2x2_tb at 1( 0) + 0 on 185;
-  architecture sim of dense_layer_2x2_tb at 8( 119) + 0 on 186;
-file . "src/tiny_nn_2x2.vhd" "955e2e47240a5fa31d6c21b2d721d67fb839ab52" "20260904073908.310":
-  entity tiny_nn_2x2 at 1( 0) + 0 on 307;
-  architecture rtl of tiny_nn_2x2 at 32( 623) + 0 on 308;
+file . "src/pe_array_4x4.vhd" "1ab15cdd1afba0fe7e7dfd21ab7b4e1b70dc8edd" "20260907062331.169":
+  entity pe_array_4x4 at 1( 0) + 0 on 333;
+  architecture rtl of pe_array_4x4 at 51( 1486) + 0 on 334;
 file . "tb/tiny_nn_2x2_tb.vhd" "4f2e8e0a5f76b0b530e0b6564abc1a2f74122e44" "20260904073908.311":
   entity tiny_nn_2x2_tb at 1( 0) + 0 on 309;
   architecture tb of tiny_nn_2x2_tb at 8( 108) + 0 on 310;
+file . "src/tiny_nn_2x2.vhd" "955e2e47240a5fa31d6c21b2d721d67fb839ab52" "20260904073908.310":
+  entity tiny_nn_2x2 at 1( 0) + 0 on 307;
+  architecture rtl of tiny_nn_2x2 at 32( 623) + 0 on 308;
+file . "tb/dense_layer_2x2_tb.vhd" "4ceba79d837a08a1aca9ff7b25b927b589982ae0" "20260903165313.301":
+  entity dense_layer_2x2_tb at 1( 0) + 0 on 185;
+  architecture sim of dense_layer_2x2_tb at 8( 119) + 0 on 186;
+file . "src/dense_layer_2x2.vhd" "f9ce55b7c8906272a2daf97803eb55c87e6cb2b4" "20260904073908.308":
+  entity dense_layer_2x2 at 1( 0) + 0 on 303;
+  architecture rtl of dense_layer_2x2 at 25( 425) + 0 on 304;
+file . "tb/bias_add_2_tb.vhd" "1f0be6ec6e7c67f3affcd272b360c181672d8573" "20260903155530.991":
+  entity bias_add_2_tb at 1( 0) + 0 on 165;
+  architecture sim of bias_add_2_tb at 8( 114) + 0 on 166;
+file . "src/bias_add_2.vhd" "63a2caf64b66158fbc067b972d187965120591f6" "20260904073908.306":
+  entity bias_add_2 at 1( 0) + 0 on 299;
+  architecture rtl of bias_add_2 at 18( 346) + 0 on 300;
+file . "src/matvec_engine_2x2.vhd" "d687ccfeedbbd6726861348aeaaac1f19fd205cb" "20260904073908.305":
+  entity matvec_engine_2x2 at 1( 0) + 0 on 297;
+  architecture rtl of matvec_engine_2x2 at 31( 581) + 0 on 298;
+file . "src/matmul_engine_2x2.vhd" "3a99a786fefd229ce14e3d474334dce0174bfa5f" "20260903061005.488":
+  entity matmul_engine_2x2 at 1( 0) + 0 on 125;
+  architecture rtl of matmul_engine_2x2 at 33( 699) + 0 on 126;
+file . "src/pe.vhd" "70908cdfad7ba7ba6a6ea31bf1d865e0a6b851f5" "20260907062331.168":
+  entity pe at 1( 0) + 0 on 331;
+  architecture rtl of pe at 21( 370) + 0 on 332;
+file . "tb/mac_tb.vhd" "01815c328c352c08a8c49eac02f8914b18c0f400" "20260811072322.538":
+  entity mac_tb at 1( 0) + 0 on 25;
+  architecture sim of mac_tb at 8( 107) + 0 on 26;
+file . "src/mac.vhd" "81986a71f36343292e890b6fabbb552e372b5bad" "20260907062331.168":
+  entity mac at 1( 0) + 0 on 329;
+  architecture rtl of mac at 18( 295) + 0 on 330;
+file . "tb/pe_tb.vhd" "5f6a6cf6c65bd27a8905b74caf388eff31d1affb" "20260811082253.889":
+  entity pe_tb at 1( 0) + 0 on 41;
+  architecture sim of pe_tb at 8( 105) + 0 on 42;
+file . "src/pe_chain_2.vhd" "3d7bfd9ad03ce6c48dbb1ff91008d9b5a0604151" "20260812030335.764":
+  entity pe_chain_2 at 1( 0) + 0 on 69;
+  architecture rtl of pe_chain_2 at 19( 432) + 0 on 70;
+file . "tb/pe_chain_2_tb.vhd" "6a48ad132b12468ae29af8bf581207d7def25e59" "20260812023214.660":
+  entity pe_chain_2_tb at 1( 0) + 0 on 63;
+  architecture sim of pe_chain_2_tb at 8( 121) + 0 on 64;
+file . "src/pe_array_2x2.vhd" "dd54450de35ce63730e358d6c826a4f8c6992b24" "20260904073908.301":
+  entity pe_array_2x2 at 1( 0) + 0 on 295;
+  architecture rtl of pe_array_2x2 at 27( 759) + 0 on 296;
+file . "tb/pe_array_2x2_tb.vhd" "93cb5049fc9001138e6ef209ba52b6ac307cf4e5" "20260812071543.343":
+  entity pe_array_2x2_tb at 1( 0) + 0 on 83;
+  architecture sim of pe_array_2x2_tb at 8( 125) + 0 on 84;
+file . "tb/matmul_engine_2x2_tb.vhd" "9fa48195fdfbcf71678d299dac31a97316d9e560" "20260903061005.490":
+  entity matmul_engine_2x2_tb at 1( 0) + 0 on 127;
+  architecture sim of matmul_engine_2x2_tb at 8( 114) + 0 on 128;
+file . "tb/matvec_engine_2x2_tb.vhd" "4fd62ddbef27b8a63d4a8b423f096d9d5e767291" "20260903083218.329":
+  entity matvec_engine_2x2_tb at 1( 0) + 0 on 161;
+  architecture sim of matvec_engine_2x2_tb at 8( 114) + 0 on 162;
+file . "src/relu_2.vhd" "0582b0365bd86379520c76ebb961acd0049a92c8" "20260904073908.307":
+  entity relu_2 at 1( 0) + 0 on 301;
+  architecture rtl of relu_2 at 12( 207) + 0 on 302;
+file . "tb/relu_2_tb.vhd" "88c0468ffbe7aa8d0863452db80eb94a670f38b4" "20260903161449.433":
+  entity relu_2_tb at 1( 0) + 0 on 169;
+  architecture sim of relu_2_tb at 8( 110) + 0 on 170;
+file . "src/requantize_2.vhd" "ab7c303e81b20e943da8d2d4d1e93f8c5e2bf223" "20260904073908.309":
+  entity requantize_2 at 1( 0) + 0 on 305;
+  architecture rtl of requantize_2 at 12( 205) + 0 on 306;
+file . "tb/requantize_2_tb.vhd" "bae3c6b9c8433bcbb33206f2e1b45bef743745af" "20260904021051.564":
+  entity requantize_2_tb at 1( 0) + 0 on 189;
+  architecture sim of requantize_2_tb at 8( 109) + 0 on 190;
+file . "src/requantize_2_configurable.vhd" "b0dad9c631491a8439729e52ccf60771ca6648fc" "20260907034451.002":
+  entity requantize_2_configurable at 1( 0) + 0 on 311;
+  architecture rtl of requantize_2_configurable at 14( 380) + 0 on 312;
+file . "tb/requantize_2_configurable_tb.vhd" "59724ffd1499f16e09e2d7d2d42b75706b423778" "20260907034451.002":
+  entity requantize_2_configurable_tb at 1( 0) + 0 on 313;
+  architecture sim of requantize_2_configurable_tb at 8( 122) + 0 on 314;
+file . "tb/pe_array_4x4_tb.vhd" "52b8ecabde7e0688412e94e72cf9d41d754d1cec" "20260907062331.170":
+  entity pe_array_4x4_tb at 1( 0) + 0 on 335;
+  architecture sim of pe_array_4x4_tb at 8( 125) + 0 on 336;
