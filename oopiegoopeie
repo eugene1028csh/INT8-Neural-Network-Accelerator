@@ -1,4 +1,4 @@
-name: '676767'
+name: oopiegoopie
 project_disk_path: ''
 project_type: genericProject
 toplevel: ''
@@ -59,6 +59,14 @@ files:
     logical_name: ''
     is_manual: true
     source_type: none
+  - name: src/pe_array_4x4.vhd
+    file_type: vhdlSource
+    file_version: '2008'
+    is_include_file: false
+    include_path: ''
+    logical_name: ''
+    is_manual: true
+    source_type: none
   - name: src/pe_chain_2.vhd
     file_type: vhdlSource
     file_version: '2008'
@@ -76,6 +84,14 @@ files:
     is_manual: true
     source_type: none
   - name: src/requantize_2.vhd
+    file_type: vhdlSource
+    file_version: '2008'
+    is_include_file: false
+    include_path: ''
+    logical_name: ''
+    is_manual: true
+    source_type: none
+  - name: src/requantize_2_configurable.vhd
     file_type: vhdlSource
     file_version: '2008'
     is_include_file: false
@@ -147,6 +163,14 @@ files:
     logical_name: ''
     is_manual: true
     source_type: none
+  - name: tb/pe_array_4x4_tb.vhd
+    file_type: vhdlSource
+    file_version: '2008'
+    is_include_file: false
+    include_path: ''
+    logical_name: ''
+    is_manual: true
+    source_type: none
   - name: tb/pe_chain_2_tb.vhd
     file_type: vhdlSource
     file_version: '2008'
@@ -164,6 +188,14 @@ files:
     is_manual: true
     source_type: none
   - name: tb/relu_2_tb.vhd
+    file_type: vhdlSource
+    file_version: '2008'
+    is_include_file: false
+    include_path: ''
+    logical_name: ''
+    is_manual: true
+    source_type: none
+  - name: tb/requantize_2_configurable_tb.vhd
     file_type: vhdlSource
     file_version: '2008'
     is_include_file: false
