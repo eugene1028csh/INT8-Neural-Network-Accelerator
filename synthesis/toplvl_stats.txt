@@ -1,0 +1,961 @@
+
+ /----------------------------------------------------------------------------\
+ |                                                                            |
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |                                                                            |
+ |  Copyright (C) 2012 - 2020  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |                                                                            |
+ |  Permission to use, copy, modify, and/or distribute this software for any  |
+ |  purpose with or without fee is hereby granted, provided that the above    |
+ |  copyright notice and this permission notice appear in all copies.         |
+ |                                                                            |
+ |  THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES  |
+ |  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF          |
+ |  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR   |
+ |  ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES    |
+ |  WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN     |
+ |  ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF   |
+ |  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.            |
+ |                                                                            |
+ \----------------------------------------------------------------------------/
+
+ Yosys 0.33 (git sha1 2584903a060)
+
+
+-- Running command `read_verilog synthesis/toplvl_synth.v; hierarchy -top toplvl; proc; opt; stat' --
+
+1. Executing Verilog-2005 frontend: synthesis/toplvl_synth.v
+Parsing Verilog input from `synthesis/toplvl_synth.v' to AST representation.
+Generating RTLIL representation for module `\mac'.
+Generating RTLIL representation for module `\pe'.
+Generating RTLIL representation for module `\pe_array_4x4'.
+Generating RTLIL representation for module `\output_buffer_4'.
+Generating RTLIL representation for module `\relu_2'.
+Generating RTLIL representation for module `\bias_add_2'.
+Generating RTLIL representation for module `\matvec_engine_4x4'.
+Generating RTLIL representation for module `\bias_buffer_4'.
+Generating RTLIL representation for module `\weight_buffer_16'.
+Generating RTLIL representation for module `\input_buffer_4'.
+Generating RTLIL representation for module `\toplvl'.
+Successfully finished Verilog frontend.
+
+2. Executing HIERARCHY pass (managing design hierarchy).
+
+2.1. Analyzing design hierarchy..
+Top module:  \toplvl
+Used module:     \output_buffer_4
+Used module:     \relu_2
+Used module:     \bias_add_2
+Used module:     \matvec_engine_4x4
+Used module:         \pe_array_4x4
+Used module:             \pe
+Used module:                 \mac
+Used module:     \bias_buffer_4
+Used module:     \weight_buffer_16
+Used module:     \input_buffer_4
+
+2.2. Analyzing design hierarchy..
+Top module:  \toplvl
+Used module:     \output_buffer_4
+Used module:     \relu_2
+Used module:     \bias_add_2
+Used module:     \matvec_engine_4x4
+Used module:         \pe_array_4x4
+Used module:             \pe
+Used module:                 \mac
+Used module:     \bias_buffer_4
+Used module:     \weight_buffer_16
+Used module:     \input_buffer_4
+Removed 0 unused modules.
+
+3. Executing PROC pass (convert processes to netlists).
+
+3.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+3.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 1 switch rules as full_case in process $proc$synthesis/toplvl_synth.v:2034$202 in module toplvl.
+Marked 1 switch rules as full_case in process $proc$synthesis/toplvl_synth.v:2025$201 in module toplvl.
+Marked 1 switch rules as full_case in process $proc$synthesis/toplvl_synth.v:2016$200 in module toplvl.
+Marked 1 switch rules as full_case in process $proc$synthesis/toplvl_synth.v:1996$194 in module toplvl.
+Removed 1 dead cases from process $proc$synthesis/toplvl_synth.v:1140$99 in module matvec_engine_4x4.
+Marked 1 switch rules as full_case in process $proc$synthesis/toplvl_synth.v:1140$99 in module matvec_engine_4x4.
+Removed 1 dead cases from process $proc$synthesis/toplvl_synth.v:1122$98 in module matvec_engine_4x4.
+Marked 1 switch rules as full_case in process $proc$synthesis/toplvl_synth.v:1122$98 in module matvec_engine_4x4.
+Removed 1 dead cases from process $proc$synthesis/toplvl_synth.v:1106$97 in module matvec_engine_4x4.
+Marked 1 switch rules as full_case in process $proc$synthesis/toplvl_synth.v:1106$97 in module matvec_engine_4x4.
+Removed 1 dead cases from process $proc$synthesis/toplvl_synth.v:1089$96 in module matvec_engine_4x4.
+Marked 1 switch rules as full_case in process $proc$synthesis/toplvl_synth.v:1089$96 in module matvec_engine_4x4.
+Removed 1 dead cases from process $proc$synthesis/toplvl_synth.v:1071$95 in module matvec_engine_4x4.
+Marked 1 switch rules as full_case in process $proc$synthesis/toplvl_synth.v:1071$95 in module matvec_engine_4x4.
+Marked 1 switch rules as full_case in process $proc$synthesis/toplvl_synth.v:1033$90 in module matvec_engine_4x4.
+Marked 1 switch rules as full_case in process $proc$synthesis/toplvl_synth.v:1024$89 in module matvec_engine_4x4.
+Marked 1 switch rules as full_case in process $proc$synthesis/toplvl_synth.v:1014$88 in module matvec_engine_4x4.
+Marked 1 switch rules as full_case in process $proc$synthesis/toplvl_synth.v:1005$87 in module matvec_engine_4x4.
+Marked 1 switch rules as full_case in process $proc$synthesis/toplvl_synth.v:996$86 in module matvec_engine_4x4.
+Marked 1 switch rules as full_case in process $proc$synthesis/toplvl_synth.v:987$85 in module matvec_engine_4x4.
+Marked 1 switch rules as full_case in process $proc$synthesis/toplvl_synth.v:978$84 in module matvec_engine_4x4.
+Marked 1 switch rules as full_case in process $proc$synthesis/toplvl_synth.v:969$83 in module matvec_engine_4x4.
+Marked 1 switch rules as full_case in process $proc$synthesis/toplvl_synth.v:859$44 in module matvec_engine_4x4.
+Removed a total of 5 dead cases.
+
+3.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 0 redundant assignments.
+Promoted 43 assignments to connections.
+
+3.4. Executing PROC_INIT pass (extract init attributes).
+Found init rule in `\toplvl.$proc$synthesis/toplvl_synth.v:0$206'.
+  Set init value: \n146_q = 2'00
+Found init rule in `\toplvl.$proc$synthesis/toplvl_synth.v:0$205'.
+  Set init value: \next_state = 2'00
+Found init rule in `\toplvl.$proc$synthesis/toplvl_synth.v:0$204'.
+  Set init value: \current_state = 2'00
+Found init rule in `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:0$104'.
+  Set init value: \n567_q = 3'000
+Found init rule in `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:0$103'.
+  Set init value: \n566_q = 2'00
+Found init rule in `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:0$102'.
+  Set init value: \cycle_count = 3'000
+Found init rule in `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:0$101'.
+  Set init value: \next_state = 2'00
+Found init rule in `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:0$100'.
+  Set init value: \current_state = 2'00
+
+3.5. Executing PROC_ARST pass (detect async resets in processes).
+
+3.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~18 debug messages>
+
+3.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\toplvl.$proc$synthesis/toplvl_synth.v:0$206'.
+Creating decoders for process `\toplvl.$proc$synthesis/toplvl_synth.v:0$205'.
+Creating decoders for process `\toplvl.$proc$synthesis/toplvl_synth.v:0$204'.
+Creating decoders for process `\toplvl.$proc$synthesis/toplvl_synth.v:2049$203'.
+Creating decoders for process `\toplvl.$proc$synthesis/toplvl_synth.v:2034$202'.
+     1/1: $1\n137_o[0:0]
+Creating decoders for process `\toplvl.$proc$synthesis/toplvl_synth.v:2025$201'.
+     1/1: $1\n132_o[0:0]
+Creating decoders for process `\toplvl.$proc$synthesis/toplvl_synth.v:2016$200'.
+     1/1: $1\n128_o[0:0]
+Creating decoders for process `\toplvl.$proc$synthesis/toplvl_synth.v:1996$194'.
+     1/1: $1\n109_o[1:0]
+Creating decoders for process `\toplvl.$proc$synthesis/toplvl_synth.v:1788$186'.
+Creating decoders for process `\toplvl.$proc$synthesis/toplvl_synth.v:1783$185'.
+Creating decoders for process `\input_buffer_4.$proc$synthesis/toplvl_synth.v:1590$174'.
+Creating decoders for process `\weight_buffer_16.$proc$synthesis/toplvl_synth.v:1408$122'.
+Creating decoders for process `\bias_buffer_4.$proc$synthesis/toplvl_synth.v:1206$108'.
+Creating decoders for process `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:0$104'.
+Creating decoders for process `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:0$103'.
+Creating decoders for process `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:0$102'.
+Creating decoders for process `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:0$101'.
+Creating decoders for process `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:0$100'.
+Creating decoders for process `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:1140$99'.
+     1/1: $1\n599_o[7:0]
+Creating decoders for process `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:1122$98'.
+     1/1: $1\n593_o[7:0]
+Creating decoders for process `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:1106$97'.
+     1/1: $1\n587_o[7:0]
+Creating decoders for process `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:1089$96'.
+     1/1: $1\n581_o[7:0]
+Creating decoders for process `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:1071$95'.
+     1/1: $1\n575_o[7:0]
+Creating decoders for process `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:1053$94'.
+Creating decoders for process `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:1048$93'.
+Creating decoders for process `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:1045$92'.
+Creating decoders for process `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:1042$91'.
+Creating decoders for process `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:1033$90'.
+     1/1: $1\n559_o[0:0]
+Creating decoders for process `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:1024$89'.
+     1/1: $1\n555_o[0:0]
+Creating decoders for process `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:1014$88'.
+     1/1: $1\n550_o[7:0]
+Creating decoders for process `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:1005$87'.
+     1/1: $1\n543_o[7:0]
+Creating decoders for process `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:996$86'.
+     1/1: $1\n540_o[7:0]
+Creating decoders for process `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:987$85'.
+     1/1: $1\n537_o[7:0]
+Creating decoders for process `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:978$84'.
+     1/1: $1\n534_o[7:0]
+Creating decoders for process `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:969$83'.
+     1/1: $1\n530_o[0:0]
+Creating decoders for process `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:859$44'.
+     1/1: $1\n428_o[1:0]
+Creating decoders for process `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:734$21'.
+Creating decoders for process `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:729$20'.
+Creating decoders for process `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:724$19'.
+Creating decoders for process `\output_buffer_4.$proc$synthesis/toplvl_synth.v:471$14'.
+Creating decoders for process `\pe.$proc$synthesis/toplvl_synth.v:84$11'.
+Creating decoders for process `\pe.$proc$synthesis/toplvl_synth.v:81$10'.
+Creating decoders for process `\mac.$proc$synthesis/toplvl_synth.v:35$5'.
+
+3.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\toplvl.\n137_o' from process `\toplvl.$proc$synthesis/toplvl_synth.v:2034$202'.
+No latch inferred for signal `\toplvl.\n132_o' from process `\toplvl.$proc$synthesis/toplvl_synth.v:2025$201'.
+No latch inferred for signal `\toplvl.\n128_o' from process `\toplvl.$proc$synthesis/toplvl_synth.v:2016$200'.
+No latch inferred for signal `\toplvl.\n109_o' from process `\toplvl.$proc$synthesis/toplvl_synth.v:1996$194'.
+No latch inferred for signal `\toplvl.\next_state' from process `\toplvl.$proc$synthesis/toplvl_synth.v:1788$186'.
+Removing init bit 1'0 for non-memory siginal `\toplvl.\next_state [0]` in process `\toplvl.$proc$synthesis/toplvl_synth.v:1788$186`.
+Removing init bit 1'0 for non-memory siginal `\toplvl.\next_state [1]` in process `\toplvl.$proc$synthesis/toplvl_synth.v:1788$186`.
+No latch inferred for signal `\toplvl.\current_state' from process `\toplvl.$proc$synthesis/toplvl_synth.v:1783$185'.
+Removing init bit 1'0 for non-memory siginal `\toplvl.\current_state [0]` in process `\toplvl.$proc$synthesis/toplvl_synth.v:1783$185`.
+Removing init bit 1'0 for non-memory siginal `\toplvl.\current_state [1]` in process `\toplvl.$proc$synthesis/toplvl_synth.v:1783$185`.
+No latch inferred for signal `\matvec_engine_4x4.\n599_o' from process `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:1140$99'.
+No latch inferred for signal `\matvec_engine_4x4.\n593_o' from process `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:1122$98'.
+No latch inferred for signal `\matvec_engine_4x4.\n587_o' from process `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:1106$97'.
+No latch inferred for signal `\matvec_engine_4x4.\n581_o' from process `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:1089$96'.
+No latch inferred for signal `\matvec_engine_4x4.\n575_o' from process `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:1071$95'.
+No latch inferred for signal `\matvec_engine_4x4.\n559_o' from process `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:1033$90'.
+No latch inferred for signal `\matvec_engine_4x4.\n555_o' from process `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:1024$89'.
+No latch inferred for signal `\matvec_engine_4x4.\n550_o' from process `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:1014$88'.
+No latch inferred for signal `\matvec_engine_4x4.\n543_o' from process `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:1005$87'.
+No latch inferred for signal `\matvec_engine_4x4.\n540_o' from process `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:996$86'.
+No latch inferred for signal `\matvec_engine_4x4.\n537_o' from process `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:987$85'.
+No latch inferred for signal `\matvec_engine_4x4.\n534_o' from process `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:978$84'.
+No latch inferred for signal `\matvec_engine_4x4.\n530_o' from process `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:969$83'.
+No latch inferred for signal `\matvec_engine_4x4.\n428_o' from process `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:859$44'.
+No latch inferred for signal `\matvec_engine_4x4.\cycle_count' from process `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:734$21'.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_4x4.\cycle_count [0]` in process `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:734$21`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_4x4.\cycle_count [1]` in process `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:734$21`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_4x4.\cycle_count [2]` in process `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:734$21`.
+No latch inferred for signal `\matvec_engine_4x4.\next_state' from process `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:729$20'.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_4x4.\next_state [0]` in process `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:729$20`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_4x4.\next_state [1]` in process `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:729$20`.
+No latch inferred for signal `\matvec_engine_4x4.\current_state' from process `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:724$19'.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_4x4.\current_state [0]` in process `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:724$19`.
+Removing init bit 1'0 for non-memory siginal `\matvec_engine_4x4.\current_state [1]` in process `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:724$19`.
+
+3.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\toplvl.\n146_q' using process `\toplvl.$proc$synthesis/toplvl_synth.v:2049$203'.
+  created $dff cell `$procdff$310' with positive edge clock.
+Creating register for signal `\input_buffer_4.\n168_q' using process `\input_buffer_4.$proc$synthesis/toplvl_synth.v:1590$174'.
+  created $dff cell `$procdff$311' with positive edge clock.
+Creating register for signal `\weight_buffer_16.\n231_q' using process `\weight_buffer_16.$proc$synthesis/toplvl_synth.v:1408$122'.
+  created $dff cell `$procdff$312' with positive edge clock.
+Creating register for signal `\bias_buffer_4.\n322_q' using process `\bias_buffer_4.$proc$synthesis/toplvl_synth.v:1206$108'.
+  created $dff cell `$procdff$313' with positive edge clock.
+Creating register for signal `\matvec_engine_4x4.\n567_q' using process `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:1053$94'.
+  created $dff cell `$procdff$314' with positive edge clock.
+Creating register for signal `\matvec_engine_4x4.\n566_q' using process `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:1048$93'.
+  created $dff cell `$procdff$315' with positive edge clock.
+Creating register for signal `\matvec_engine_4x4.\n565_q' using process `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:1045$92'.
+  created $dff cell `$procdff$316' with positive edge clock.
+Creating register for signal `\matvec_engine_4x4.\n564_q' using process `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:1042$91'.
+  created $dff cell `$procdff$317' with positive edge clock.
+Creating register for signal `\output_buffer_4.\n629_q' using process `\output_buffer_4.$proc$synthesis/toplvl_synth.v:471$14'.
+  created $dff cell `$procdff$318' with positive edge clock.
+Creating register for signal `\pe.\n719_q' using process `\pe.$proc$synthesis/toplvl_synth.v:84$11'.
+  created $dff cell `$procdff$319' with positive edge clock.
+Creating register for signal `\pe.\n718_q' using process `\pe.$proc$synthesis/toplvl_synth.v:81$10'.
+  created $dff cell `$procdff$320' with positive edge clock.
+Creating register for signal `\mac.\n734_q' using process `\mac.$proc$synthesis/toplvl_synth.v:35$5'.
+  created $dff cell `$procdff$321' with positive edge clock.
+
+3.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+3.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Removing empty process `toplvl.$proc$synthesis/toplvl_synth.v:0$206'.
+Removing empty process `toplvl.$proc$synthesis/toplvl_synth.v:0$205'.
+Removing empty process `toplvl.$proc$synthesis/toplvl_synth.v:0$204'.
+Removing empty process `toplvl.$proc$synthesis/toplvl_synth.v:2049$203'.
+Found and cleaned up 1 empty switch in `\toplvl.$proc$synthesis/toplvl_synth.v:2034$202'.
+Removing empty process `toplvl.$proc$synthesis/toplvl_synth.v:2034$202'.
+Found and cleaned up 1 empty switch in `\toplvl.$proc$synthesis/toplvl_synth.v:2025$201'.
+Removing empty process `toplvl.$proc$synthesis/toplvl_synth.v:2025$201'.
+Found and cleaned up 1 empty switch in `\toplvl.$proc$synthesis/toplvl_synth.v:2016$200'.
+Removing empty process `toplvl.$proc$synthesis/toplvl_synth.v:2016$200'.
+Found and cleaned up 1 empty switch in `\toplvl.$proc$synthesis/toplvl_synth.v:1996$194'.
+Removing empty process `toplvl.$proc$synthesis/toplvl_synth.v:1996$194'.
+Removing empty process `toplvl.$proc$synthesis/toplvl_synth.v:1788$186'.
+Removing empty process `toplvl.$proc$synthesis/toplvl_synth.v:1783$185'.
+Removing empty process `input_buffer_4.$proc$synthesis/toplvl_synth.v:1590$174'.
+Removing empty process `weight_buffer_16.$proc$synthesis/toplvl_synth.v:1408$122'.
+Removing empty process `bias_buffer_4.$proc$synthesis/toplvl_synth.v:1206$108'.
+Removing empty process `matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:0$104'.
+Removing empty process `matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:0$103'.
+Removing empty process `matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:0$102'.
+Removing empty process `matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:0$101'.
+Removing empty process `matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:0$100'.
+Found and cleaned up 1 empty switch in `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:1140$99'.
+Removing empty process `matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:1140$99'.
+Found and cleaned up 1 empty switch in `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:1122$98'.
+Removing empty process `matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:1122$98'.
+Found and cleaned up 1 empty switch in `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:1106$97'.
+Removing empty process `matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:1106$97'.
+Found and cleaned up 1 empty switch in `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:1089$96'.
+Removing empty process `matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:1089$96'.
+Found and cleaned up 1 empty switch in `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:1071$95'.
+Removing empty process `matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:1071$95'.
+Removing empty process `matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:1053$94'.
+Removing empty process `matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:1048$93'.
+Removing empty process `matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:1045$92'.
+Removing empty process `matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:1042$91'.
+Found and cleaned up 1 empty switch in `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:1033$90'.
+Removing empty process `matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:1033$90'.
+Found and cleaned up 1 empty switch in `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:1024$89'.
+Removing empty process `matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:1024$89'.
+Found and cleaned up 1 empty switch in `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:1014$88'.
+Removing empty process `matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:1014$88'.
+Found and cleaned up 1 empty switch in `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:1005$87'.
+Removing empty process `matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:1005$87'.
+Found and cleaned up 1 empty switch in `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:996$86'.
+Removing empty process `matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:996$86'.
+Found and cleaned up 1 empty switch in `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:987$85'.
+Removing empty process `matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:987$85'.
+Found and cleaned up 1 empty switch in `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:978$84'.
+Removing empty process `matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:978$84'.
+Found and cleaned up 1 empty switch in `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:969$83'.
+Removing empty process `matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:969$83'.
+Found and cleaned up 1 empty switch in `\matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:859$44'.
+Removing empty process `matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:859$44'.
+Removing empty process `matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:734$21'.
+Removing empty process `matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:729$20'.
+Removing empty process `matvec_engine_4x4.$proc$synthesis/toplvl_synth.v:724$19'.
+Removing empty process `output_buffer_4.$proc$synthesis/toplvl_synth.v:471$14'.
+Removing empty process `pe.$proc$synthesis/toplvl_synth.v:84$11'.
+Removing empty process `pe.$proc$synthesis/toplvl_synth.v:81$10'.
+Removing empty process `mac.$proc$synthesis/toplvl_synth.v:35$5'.
+Cleaned up 18 empty switches.
+
+3.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module toplvl.
+<suppressed ~2 debug messages>
+Optimizing module input_buffer_4.
+Optimizing module weight_buffer_16.
+Optimizing module bias_buffer_4.
+Optimizing module matvec_engine_4x4.
+<suppressed ~8 debug messages>
+Optimizing module bias_add_2.
+Optimizing module relu_2.
+Optimizing module output_buffer_4.
+Optimizing module pe_array_4x4.
+Optimizing module pe.
+Optimizing module mac.
+
+4. Executing OPT pass (performing simple optimizations).
+
+4.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module toplvl.
+Optimizing module input_buffer_4.
+Optimizing module weight_buffer_16.
+Optimizing module bias_buffer_4.
+Optimizing module matvec_engine_4x4.
+<suppressed ~1 debug messages>
+Optimizing module bias_add_2.
+Optimizing module relu_2.
+Optimizing module output_buffer_4.
+Optimizing module pe_array_4x4.
+Optimizing module pe.
+Optimizing module mac.
+
+4.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\toplvl'.
+<suppressed ~48 debug messages>
+Finding identical cells in module `\input_buffer_4'.
+Finding identical cells in module `\weight_buffer_16'.
+Finding identical cells in module `\bias_buffer_4'.
+Finding identical cells in module `\matvec_engine_4x4'.
+<suppressed ~129 debug messages>
+Finding identical cells in module `\bias_add_2'.
+Finding identical cells in module `\relu_2'.
+Finding identical cells in module `\output_buffer_4'.
+Finding identical cells in module `\pe_array_4x4'.
+Finding identical cells in module `\pe'.
+Finding identical cells in module `\mac'.
+Removed a total of 59 cells.
+
+4.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \toplvl..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \input_buffer_4..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \weight_buffer_16..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \bias_buffer_4..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \matvec_engine_4x4..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \bias_add_2..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \relu_2..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+      Replacing known input bits on port A of cell $ternary$synthesis/toplvl_synth.v:493$16: \data1 -> { 1'0 \data1 [30:0] }
+      Replacing known input bits on port A of cell $ternary$synthesis/toplvl_synth.v:489$15: \data0 -> { 1'0 \data0 [30:0] }
+  Analyzing evaluation results.
+Running muxtree optimizer on module \output_buffer_4..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \pe_array_4x4..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \pe..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \mac..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~25 debug messages>
+
+4.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \toplvl.
+    New ctrl vector for $pmux cell $procmux$208: { $procmux$229_CMP $auto$opt_reduce.cc:134:opt_pmux$323 }
+    New ctrl vector for $pmux cell $procmux$214: { $auto$opt_reduce.cc:134:opt_pmux$325 $procmux$227_CMP }
+    New ctrl vector for $pmux cell $procmux$220: { $procmux$230_CMP $auto$opt_reduce.cc:134:opt_pmux$327 }
+  Optimizing cells in module \toplvl.
+  Optimizing cells in module \input_buffer_4.
+  Optimizing cells in module \weight_buffer_16.
+  Optimizing cells in module \bias_buffer_4.
+  Optimizing cells in module \matvec_engine_4x4.
+    New ctrl vector for $pmux cell $procmux$257: { $procmux$308_CMP $auto$opt_reduce.cc:134:opt_pmux$329 }
+    New ctrl vector for $pmux cell $procmux$281: { $procmux$308_CMP $auto$opt_reduce.cc:134:opt_pmux$331 }
+    New ctrl vector for $pmux cell $procmux$299: { $procmux$303_CMP $auto$opt_reduce.cc:134:opt_pmux$333 }
+    New ctrl vector for $pmux cell $procmux$287: { $procmux$308_CMP $auto$opt_reduce.cc:134:opt_pmux$335 }
+    New ctrl vector for $pmux cell $procmux$275: { $procmux$308_CMP $auto$opt_reduce.cc:134:opt_pmux$337 }
+    New ctrl vector for $pmux cell $procmux$293: { $procmux$308_CMP $auto$opt_reduce.cc:134:opt_pmux$339 }
+    New ctrl vector for $pmux cell $procmux$269: { $procmux$308_CMP $auto$opt_reduce.cc:134:opt_pmux$341 }
+    New ctrl vector for $pmux cell $procmux$263: { $procmux$307_CMP $auto$opt_reduce.cc:134:opt_pmux$343 }
+  Optimizing cells in module \matvec_engine_4x4.
+  Optimizing cells in module \bias_add_2.
+  Optimizing cells in module \relu_2.
+  Optimizing cells in module \output_buffer_4.
+  Optimizing cells in module \pe_array_4x4.
+  Optimizing cells in module \pe.
+  Optimizing cells in module \mac.
+Performed a total of 11 changes.
+
+4.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\toplvl'.
+Finding identical cells in module `\input_buffer_4'.
+Finding identical cells in module `\weight_buffer_16'.
+Finding identical cells in module `\bias_buffer_4'.
+Finding identical cells in module `\matvec_engine_4x4'.
+<suppressed ~15 debug messages>
+Finding identical cells in module `\bias_add_2'.
+Finding identical cells in module `\relu_2'.
+Finding identical cells in module `\output_buffer_4'.
+Finding identical cells in module `\pe_array_4x4'.
+Finding identical cells in module `\pe'.
+Finding identical cells in module `\mac'.
+Removed a total of 5 cells.
+
+4.6. Executing OPT_DFF pass (perform DFF optimizations).
+Adding SRST signal on $procdff$310 ($dff) from module toplvl (D = \next_state, Q = \n146_q, rval = 2'00).
+Adding SRST signal on $procdff$311 ($dff) from module input_buffer_4 (D = \n159_o, Q = \n168_q, rval = 0).
+Adding SRST signal on $procdff$312 ($dff) from module weight_buffer_16 (D = \n210_o, Q = \n231_q, rval = 128'00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000).
+Adding SRST signal on $procdff$313 ($dff) from module bias_buffer_4 (D = \n313_o, Q = \n322_q, rval = 128'00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000).
+Adding SRST signal on $procdff$314 ($dff) from module matvec_engine_4x4 (D = \n399_o, Q = \n567_q, rval = 3'000).
+Adding SRST signal on $procdff$315 ($dff) from module matvec_engine_4x4 (D = \next_state, Q = \n566_q, rval = 2'00).
+Adding SRST signal on $procdff$316 ($dff) from module matvec_engine_4x4 (D = \n361_o, Q = \n565_q, rval = 0).
+Adding SRST signal on $procdff$317 ($dff) from module matvec_engine_4x4 (D = \n360_o, Q = \n564_q, rval = 128'00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000).
+Adding SRST signal on $procdff$318 ($dff) from module output_buffer_4 (D = \n620_o, Q = \n629_q, rval = 128'00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000).
+Adding SRST signal on $procdff$319 ($dff) from module pe (D = \n709_o, Q = \n719_q, rval = 8'00000000).
+Adding SRST signal on $procdff$320 ($dff) from module pe (D = \n708_o, Q = \n718_q, rval = 8'00000000).
+Adding SRST signal on $procdff$321 ($dff) from module mac (D = \n729_o, Q = \n734_q, rval = 0).
+
+4.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \toplvl..
+Finding unused cells or wires in module \input_buffer_4..
+Finding unused cells or wires in module \weight_buffer_16..
+Finding unused cells or wires in module \bias_buffer_4..
+Finding unused cells or wires in module \matvec_engine_4x4..
+Finding unused cells or wires in module \bias_add_2..
+Finding unused cells or wires in module \relu_2..
+Finding unused cells or wires in module \output_buffer_4..
+Finding unused cells or wires in module \pe_array_4x4..
+Finding unused cells or wires in module \pe..
+Finding unused cells or wires in module \mac..
+Removed 12 unused cells and 323 unused wires.
+<suppressed ~55 debug messages>
+
+4.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module bias_add_2.
+Optimizing module bias_buffer_4.
+Optimizing module input_buffer_4.
+Optimizing module mac.
+Optimizing module matvec_engine_4x4.
+Optimizing module output_buffer_4.
+Optimizing module pe.
+Optimizing module pe_array_4x4.
+Optimizing module relu_2.
+Optimizing module toplvl.
+Optimizing module weight_buffer_16.
+
+4.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+4.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \bias_add_2..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \bias_buffer_4..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \input_buffer_4..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \mac..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \matvec_engine_4x4..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \output_buffer_4..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \pe..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \pe_array_4x4..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \relu_2..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \toplvl..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \weight_buffer_16..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~25 debug messages>
+
+4.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \bias_add_2.
+  Optimizing cells in module \bias_buffer_4.
+  Optimizing cells in module \input_buffer_4.
+  Optimizing cells in module \mac.
+  Optimizing cells in module \matvec_engine_4x4.
+  Optimizing cells in module \output_buffer_4.
+  Optimizing cells in module \pe.
+  Optimizing cells in module \pe_array_4x4.
+  Optimizing cells in module \relu_2.
+  Optimizing cells in module \toplvl.
+  Optimizing cells in module \weight_buffer_16.
+Performed a total of 0 changes.
+
+4.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\bias_add_2'.
+Finding identical cells in module `\bias_buffer_4'.
+Finding identical cells in module `\input_buffer_4'.
+Finding identical cells in module `\mac'.
+Finding identical cells in module `\matvec_engine_4x4'.
+<suppressed ~15 debug messages>
+Finding identical cells in module `\output_buffer_4'.
+Finding identical cells in module `\pe'.
+Finding identical cells in module `\pe_array_4x4'.
+Finding identical cells in module `\relu_2'.
+Finding identical cells in module `\toplvl'.
+Finding identical cells in module `\weight_buffer_16'.
+Removed a total of 5 cells.
+
+4.13. Executing OPT_DFF pass (perform DFF optimizations).
+Adding EN signal on $auto$ff.cc:266:slice$347 ($sdff) from module bias_buffer_4 (D = \write_data, Q = \n322_q [31:0]).
+Adding EN signal on $auto$ff.cc:266:slice$347 ($sdff) from module bias_buffer_4 (D = \write_data, Q = \n322_q [63:32]).
+Adding EN signal on $auto$ff.cc:266:slice$347 ($sdff) from module bias_buffer_4 (D = \write_data, Q = \n322_q [95:64]).
+Adding EN signal on $auto$ff.cc:266:slice$347 ($sdff) from module bias_buffer_4 (D = \write_data, Q = \n322_q [127:96]).
+Adding EN signal on $auto$ff.cc:266:slice$345 ($sdff) from module input_buffer_4 (D = \write_data, Q = \n168_q [7:0]).
+Adding EN signal on $auto$ff.cc:266:slice$345 ($sdff) from module input_buffer_4 (D = \write_data, Q = \n168_q [15:8]).
+Adding EN signal on $auto$ff.cc:266:slice$345 ($sdff) from module input_buffer_4 (D = \write_data, Q = \n168_q [23:16]).
+Adding EN signal on $auto$ff.cc:266:slice$345 ($sdff) from module input_buffer_4 (D = \write_data, Q = \n168_q [31:24]).
+Adding EN signal on $auto$ff.cc:266:slice$355 ($sdff) from module mac (D = \n728_o, Q = \n734_q).
+Adding EN signal on $auto$ff.cc:266:slice$351 ($sdff) from module matvec_engine_4x4 (D = { \w00 \w01 \w02 \w03 \w10 \w11 \w12 \w13 \w20 \w21 \w22 \w23 \w30 \w31 \w32 \w33 }, Q = \n564_q).
+Adding EN signal on $auto$ff.cc:266:slice$350 ($sdff) from module matvec_engine_4x4 (D = { \x0 \x1 \x2 \x3 }, Q = \n565_q).
+Adding EN signal on $auto$ff.cc:266:slice$349 ($sdff) from module matvec_engine_4x4 (D = \next_state, Q = \n566_q).
+Adding SRST signal on $auto$ff.cc:266:slice$348 ($sdff) from module matvec_engine_4x4 (D = \n395_o [2:1], Q = \n567_q [2:1], rval = 2'00).
+Adding EN signal on $auto$ff.cc:266:slice$348 ($sdff) from module matvec_engine_4x4 (D = \n399_o [0], Q = \n567_q [0]).
+Adding EN signal on $auto$ff.cc:266:slice$390 ($sdff) from module matvec_engine_4x4 (D = \n393_o [2:1], Q = \n567_q [2:1]).
+Adding EN signal on $auto$ff.cc:266:slice$352 ($sdff) from module output_buffer_4 (D = { \data0 \data1 \data2 \data3 }, Q = \n629_q).
+Adding EN signal on $auto$ff.cc:266:slice$354 ($sdff) from module pe (D = \a_in, Q = \n718_q).
+Adding EN signal on $auto$ff.cc:266:slice$353 ($sdff) from module pe (D = \b_in, Q = \n719_q).
+Adding EN signal on $auto$ff.cc:266:slice$344 ($sdff) from module toplvl (D = \next_state, Q = \n146_q).
+Adding EN signal on $auto$ff.cc:266:slice$346 ($sdff) from module weight_buffer_16 (D = \write_data, Q = \n231_q [7:0]).
+Adding EN signal on $auto$ff.cc:266:slice$346 ($sdff) from module weight_buffer_16 (D = \write_data, Q = \n231_q [15:8]).
+Adding EN signal on $auto$ff.cc:266:slice$346 ($sdff) from module weight_buffer_16 (D = \write_data, Q = \n231_q [23:16]).
+Adding EN signal on $auto$ff.cc:266:slice$346 ($sdff) from module weight_buffer_16 (D = \write_data, Q = \n231_q [31:24]).
+Adding EN signal on $auto$ff.cc:266:slice$346 ($sdff) from module weight_buffer_16 (D = \write_data, Q = \n231_q [39:32]).
+Adding EN signal on $auto$ff.cc:266:slice$346 ($sdff) from module weight_buffer_16 (D = \write_data, Q = \n231_q [47:40]).
+Adding EN signal on $auto$ff.cc:266:slice$346 ($sdff) from module weight_buffer_16 (D = \write_data, Q = \n231_q [55:48]).
+Adding EN signal on $auto$ff.cc:266:slice$346 ($sdff) from module weight_buffer_16 (D = \write_data, Q = \n231_q [63:56]).
+Adding EN signal on $auto$ff.cc:266:slice$346 ($sdff) from module weight_buffer_16 (D = \write_data, Q = \n231_q [71:64]).
+Adding EN signal on $auto$ff.cc:266:slice$346 ($sdff) from module weight_buffer_16 (D = \write_data, Q = \n231_q [79:72]).
+Adding EN signal on $auto$ff.cc:266:slice$346 ($sdff) from module weight_buffer_16 (D = \write_data, Q = \n231_q [87:80]).
+Adding EN signal on $auto$ff.cc:266:slice$346 ($sdff) from module weight_buffer_16 (D = \write_data, Q = \n231_q [95:88]).
+Adding EN signal on $auto$ff.cc:266:slice$346 ($sdff) from module weight_buffer_16 (D = \write_data, Q = \n231_q [103:96]).
+Adding EN signal on $auto$ff.cc:266:slice$346 ($sdff) from module weight_buffer_16 (D = \write_data, Q = \n231_q [111:104]).
+Adding EN signal on $auto$ff.cc:266:slice$346 ($sdff) from module weight_buffer_16 (D = \write_data, Q = \n231_q [119:112]).
+Adding EN signal on $auto$ff.cc:266:slice$346 ($sdff) from module weight_buffer_16 (D = \write_data, Q = \n231_q [127:120]).
+
+4.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \bias_add_2..
+Finding unused cells or wires in module \bias_buffer_4..
+Finding unused cells or wires in module \input_buffer_4..
+Finding unused cells or wires in module \mac..
+Finding unused cells or wires in module \matvec_engine_4x4..
+Finding unused cells or wires in module \output_buffer_4..
+Finding unused cells or wires in module \pe..
+Finding unused cells or wires in module \pe_array_4x4..
+Finding unused cells or wires in module \relu_2..
+Finding unused cells or wires in module \toplvl..
+Finding unused cells or wires in module \weight_buffer_16..
+Removed 33 unused cells and 40 unused wires.
+<suppressed ~70 debug messages>
+
+4.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module bias_add_2.
+Optimizing module bias_buffer_4.
+Optimizing module input_buffer_4.
+Optimizing module mac.
+Optimizing module matvec_engine_4x4.
+Optimizing module output_buffer_4.
+Optimizing module pe.
+Optimizing module pe_array_4x4.
+Optimizing module relu_2.
+Optimizing module toplvl.
+Optimizing module weight_buffer_16.
+
+4.16. Rerunning OPT passes. (Maybe there is more to do..)
+
+4.17. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \bias_add_2..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \bias_buffer_4..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \input_buffer_4..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \mac..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \matvec_engine_4x4..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \output_buffer_4..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \pe..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \pe_array_4x4..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \relu_2..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \toplvl..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \weight_buffer_16..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+<suppressed ~16 debug messages>
+
+4.18. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \bias_add_2.
+  Optimizing cells in module \bias_buffer_4.
+  Optimizing cells in module \input_buffer_4.
+  Optimizing cells in module \mac.
+  Optimizing cells in module \matvec_engine_4x4.
+  Optimizing cells in module \output_buffer_4.
+  Optimizing cells in module \pe.
+  Optimizing cells in module \pe_array_4x4.
+  Optimizing cells in module \relu_2.
+  Optimizing cells in module \toplvl.
+  Optimizing cells in module \weight_buffer_16.
+Performed a total of 0 changes.
+
+4.19. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\bias_add_2'.
+Finding identical cells in module `\bias_buffer_4'.
+Finding identical cells in module `\input_buffer_4'.
+Finding identical cells in module `\mac'.
+Finding identical cells in module `\matvec_engine_4x4'.
+Finding identical cells in module `\output_buffer_4'.
+Finding identical cells in module `\pe'.
+Finding identical cells in module `\pe_array_4x4'.
+Finding identical cells in module `\relu_2'.
+Finding identical cells in module `\toplvl'.
+Finding identical cells in module `\weight_buffer_16'.
+Removed a total of 0 cells.
+
+4.20. Executing OPT_DFF pass (perform DFF optimizations).
+
+4.21. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \bias_add_2..
+Finding unused cells or wires in module \bias_buffer_4..
+Finding unused cells or wires in module \input_buffer_4..
+Finding unused cells or wires in module \mac..
+Finding unused cells or wires in module \matvec_engine_4x4..
+Finding unused cells or wires in module \output_buffer_4..
+Finding unused cells or wires in module \pe..
+Finding unused cells or wires in module \pe_array_4x4..
+Finding unused cells or wires in module \relu_2..
+Finding unused cells or wires in module \toplvl..
+Finding unused cells or wires in module \weight_buffer_16..
+
+4.22. Executing OPT_EXPR pass (perform const folding).
+Optimizing module bias_add_2.
+Optimizing module bias_buffer_4.
+Optimizing module input_buffer_4.
+Optimizing module mac.
+Optimizing module matvec_engine_4x4.
+Optimizing module output_buffer_4.
+Optimizing module pe.
+Optimizing module pe_array_4x4.
+Optimizing module relu_2.
+Optimizing module toplvl.
+Optimizing module weight_buffer_16.
+
+4.23. Finished OPT passes. (There is nothing left to do.)
+
+5. Printing statistics.
+
+=== bias_add_2 ===
+
+   Number of wires:                  8
+   Number of wire bits:            256
+   Number of public wires:           8
+   Number of public wire bits:     256
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                  2
+     $add                            2
+
+=== bias_buffer_4 ===
+
+   Number of wires:                 32
+   Number of wire bits:            691
+   Number of public wires:          28
+   Number of public wire bits:     687
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                 15
+     $and                            4
+     $not                            2
+     $reduce_and                     4
+     $sdffe                          4
+     $sub                            1
+
+=== input_buffer_4 ===
+
+   Number of wires:                 32
+   Number of wire bits:            187
+   Number of public wires:          28
+   Number of public wire bits:     183
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                 15
+     $and                            4
+     $not                            2
+     $reduce_and                     4
+     $sdffe                          4
+     $sub                            1
+
+=== mac ===
+
+   Number of wires:                 13
+   Number of wire bits:            227
+   Number of public wires:          13
+   Number of public wire bits:     227
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                  3
+     $add                            1
+     $mul                            1
+     $sdffe                          1
+
+=== matvec_engine_4x4 ===
+
+   Number of wires:                202
+   Number of wire bits:           2295
+   Number of public wires:         173
+   Number of public wire bits:    2266
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                 90
+     $add                            1
+     $and                            6
+     $eq                            20
+     $ge                             5
+     $le                             5
+     $logic_not                      5
+     $lt                             1
+     $mux                           10
+     $ne                             3
+     $not                            1
+     $pmux                          14
+     $reduce_and                     1
+     $reduce_or                      4
+     $sdffe                          5
+     $sub                            8
+     pe_array_4x4                    1
+
+=== output_buffer_4 ===
+
+   Number of wires:                 18
+   Number of wire bits:            771
+   Number of public wires:          18
+   Number of public wire bits:     771
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                  1
+     $sdffe                          1
+
+=== pe ===
+
+   Number of wires:                 13
+   Number of wire bits:            131
+   Number of public wires:          13
+   Number of public wire bits:     131
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                  3
+     $sdffe                          2
+     mac                             1
+
+=== pe_array_4x4 ===
+
+   Number of wires:                107
+   Number of wire bits:           1603
+   Number of public wires:         107
+   Number of public wire bits:    1603
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                 16
+     pe                             16
+
+=== relu_2 ===
+
+   Number of wires:                  8
+   Number of wire bits:            194
+   Number of public wires:           8
+   Number of public wire bits:     194
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                  2
+     $mux                            2
+
+=== toplvl ===
+
+   Number of wires:                139
+   Number of wire bits:           3053
+   Number of public wires:         129
+   Number of public wire bits:    3043
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                 31
+     $eq                             7
+     $logic_not                      1
+     $mux                            3
+     $ne                             2
+     $pmux                           4
+     $reduce_and                     1
+     $reduce_or                      3
+     $sdffe                          1
+     bias_add_2                      2
+     bias_buffer_4                   1
+     input_buffer_4                  1
+     matvec_engine_4x4               1
+     output_buffer_4                 1
+     relu_2                          2
+     weight_buffer_16                1
+
+=== weight_buffer_16 ===
+
+   Number of wires:                108
+   Number of wire bits:            711
+   Number of public wires:          92
+   Number of public wire bits:     695
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                 65
+     $and                           28
+     $not                            4
+     $reduce_and                    16
+     $sdffe                         16
+     $sub                            1
+
+=== design hierarchy ===
+
+   toplvl                            1
+     bias_add_2                      2
+     bias_buffer_4                   1
+     input_buffer_4                  1
+     matvec_engine_4x4               1
+       pe_array_4x4                  1
+         pe                         16
+           mac                       1
+     output_buffer_4                 1
+     relu_2                          2
+     weight_buffer_16                1
+
+   Number of wires:               1086
+   Number of wire bits:          15939
+   Number of public wires:        1023
+   Number of public wire bits:   15876
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                295
+     $add                           21
+     $and                           42
+     $eq                            27
+     $ge                             5
+     $le                             5
+     $logic_not                      6
+     $lt                             1
+     $mul                           16
+     $mux                           17
+     $ne                             5
+     $not                            9
+     $pmux                          18
+     $reduce_and                    26
+     $reduce_or                      7
+     $sdffe                         79
+     $sub                           11
+
+End of script. Logfile hash: f7b812d4cf, CPU: user 0.28s system 0.01s, MEM: 15.62 MB peak
+Yosys 0.33 (git sha1 2584903a060)
+Time spent: 26% 3x opt_clean (0 sec), 24% 5x opt_expr (0 sec), ...
