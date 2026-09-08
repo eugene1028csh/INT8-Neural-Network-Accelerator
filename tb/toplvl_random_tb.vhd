@@ -161,7 +161,7 @@ begin
           ", expected " &
           integer'image(expected(i)) --print expected value
           -- eg. Random test failed at output 2. Got 113, expected 115
-          severity error;
+          severity failure;
       end loop;
     end loop;
 
